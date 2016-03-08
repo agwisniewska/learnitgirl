@@ -29,23 +29,29 @@ $('.glyphicon-search').click(function () {
 
 $('#dn').click(function () {
 	$(this).next('tasks').style.textDecoration = "line-through";
-})
+});
 
 $('.buttonmenu').click(function() {
 	$(this).next('.dropdown-menu').toggle();
 })
 
-$(function() {
+
     $('#datetimepicker4').datetimepicker();
-    });
 
-$(function() {
     $('#datetimepicker5').datetimepicker();
-    });
 
+ $('#datetimepicker4').on('changeDate', function(ev){
+    $(this).datepicker('hide');
+});
+    		
+
+
+
+$("#createtask").click(function(){
+        $("#myModal").modal();
+    });
 
 
 });
-
 
 

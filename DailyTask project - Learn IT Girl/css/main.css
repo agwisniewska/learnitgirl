@@ -35,14 +35,17 @@ html {
 
 h3 {
 
+
 	color: #CC0066;
 	padding-top: 10px;
 	vertical-align:middle;
-	margin-left: 30px;
+	margin-left: 40px;
+
 }
 
 
 h1 {
+	
 	color: white;
 	font-family: "Impact";
 	font-style: sans-serif;
@@ -55,7 +58,9 @@ h1 {
 }
 
 h2 {
+	
 	color: #CC0066;
+	margin-top: 20px;
 
 
 }
@@ -165,7 +170,7 @@ h2 {
 
 #creator {
 	float: right;
-	margin-right: 100px;
+	margin-right: 140px;
 }
 
 .label {
@@ -183,6 +188,8 @@ h2 {
 #formtitle {
 	margin-top: 3px;
 	text-align: center;
+	padding-left: 0px;
+	padding-right: 110px;
 }
 
 .form-group {
@@ -191,3 +198,24 @@ h2 {
 }
 
 
+button.close {
+	padding: 15px;
+}
+
+.modal-content {
+	width: 600px;
+	height: 400px;
+}
+
+h4 {
+	margin-top: 20px;
+	margin-bottom: 0px;
+	color: black;
+	font-weight: bold;
+	margin-left: 40px;
+	margin-right: 10px;
+}
+
+.dropdown {
+	cursor: pointer;
+}
