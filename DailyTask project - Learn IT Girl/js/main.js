@@ -36,15 +36,13 @@ $('.buttonmenu').click(function() {
 })
 
 
-    $('#datetimepicker4').datetimepicker();
+    $('#datepicker').datepicker({
+    	altFormat: "yy-mm-dd"
+    });
 
-    $('#datetimepicker5').datetimepicker();
+    $('#datepicker').datepicker();
 
- $('#datetimepicker4').on('changeDate', function(ev){
-    $(this).datepicker('hide');
-});
-    		
-
+    $('#datepicker2').datepicker();
 
 
 $("#createtask").click(function(){
