@@ -49,7 +49,77 @@ $("#createtask").click(function(){
         $("#myModal").modal();
     });
 
+// function getStartDate() {
+	// var date = $("#datepicker").datepicker( 'getDate' );
+	// console.log(date)
+// }
+
+
+
+
+
+
+
+
+// $("input:radio[name=optradio]").click(function() {
+//      var value = $('input:radio[name=optradio]:checked').val();
+//     	console.log(value);
+// });
+
+
+
+
+
 
 });
+
+
+function createTask() {
+	getTaskValue();
+	getSelectedValue()
+	getRadioValue();
+	getStartDate();
+	getEndDate();
+
+
+	
+}
+
+function getSelectedValue() {
+      var selected = document.getElementById("selectpicker").selectedIndex;
+       var selectedvalue = document.getElementsByTagName("option")[selected].value;
+       
+
+}
+
+function getTaskValue() {
+	var description = document.getElementById('taskdesc').value;
+	
+}
+
+function getStartDate() {
+	var startDate = document.getElementById("datepicker").value;
+
+	
+}
+
+function getEndDate() {
+	var endDate = document.getElementById("datepicker2").value;
+	
+}
+
+function getRadioValue() {
+	var optradio = document.getElementsByName('optradio');
+	var optradio;
+		for(var i = 0; i < optradio.length; i++){
+    		if(optradio[i].checked){
+        		optradio = optradio[i].value;
+        	
+    		}
+		}
+
+
+}
+
 
 

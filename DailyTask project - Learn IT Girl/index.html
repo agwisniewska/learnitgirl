@@ -44,8 +44,8 @@
 							    <a class="dropdown-toggle" data-toggle="dropdown">CATEGORY
 							    
 							   		<ul class="dropdown-menu" id="firstul">
-								      <li><a href="#">Work</a></li>
-								      <li><a href="#">Home</a></li>
+								      <li id="work"><a href="#">Work</a></li>
+								      <li id="home"><a href="#">Home</a></li>
 	    							</ul>
 							  	</li>
 						 	<li class="dropdown" id="second">
@@ -84,22 +84,22 @@
 									            </div>
 								            <div class="form-group">
 								            	  <label for="category">Choose category</label>
-																								<select class="selectpicker">
-																										  <option>Work</option>
-																										  <option>Home</option>
+																								<select id="selectpicker">
+																										  <option value="work">Work</option>
+																										  <option value="home">Home</option>
 																									</select>
 											
 	               					</div>
 	               					<div class="form-group">
 						             				<label for="radiobuttons">Priority</label>
 												 														<label class="radio-inline">
-						      																			<input type="radio" name="optradio">High
+						      																			<input type="radio" name="optradio" value="high">High
 						    						           </label>
 						    					           	<label class="radio-inline">
-						      							            <input type="radio" name="optradio">Medium
+						      							            <input type="radio" name="optradio" value="medium">Medium
 						    						           </label>
 						    						           <label class="radio-inline">
-						      							            <input type="radio" name="optradio">Low
+						      							            <input type="radio" name="optradio" value="low">Low
 						    						           </label>
 												        </div>
 												        <div class="form-group">
@@ -114,7 +114,7 @@
             									<input type="text" id="datepicker2" placeholder="End Date">
             						
             						</div>
-            									<button type="submit" class="btn btn-primary" id="creator">Create task</button>
+            									<button type="button" class="btn btn-primary" id="creator" onclick="createTask()">Create task</button>
             		
                  </form>
 														          

@@ -222,16 +222,3 @@ h4 {
 .dropdown {
 	cursor: pointer;
 }
-
-#startdate {
-	border-right-width: 10px;
-
-}
-
-#closedate {
-	border-right-width: 10px;
-
-
-#enddate {
-	margin-left: 30px
-}
