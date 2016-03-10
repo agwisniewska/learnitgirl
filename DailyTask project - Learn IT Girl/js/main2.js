@@ -2,29 +2,41 @@ function createTask() {
 
       var selected = document.getElementById("selectpicker").selectedIndex;
        var selectedvalue = document.getElementsByTagName("option")[selected].value;
-       console.log(selectedvalue); 
+     
 
 	var description = document.getElementById('taskdesc').value;
-	console.log(description);
+
 	
 	var startDate = document.getElementById("datepicker").value;
-	console.log(startDate);
+
 
 
 	var endDate = document.getElementById("datepicker2").value;
-	console.log(endDate);
+
 
 	var optradio = document.getElementsByName('optradio');
 	var optradio;
 		for(var i = 0; i < optradio.length; i++){
     		if(optradio[i].checked){
         		optradio = optradio[i].value;
-        		console.log(optradio);
-        
-        }
+        		
+        	}
+
+	}
+	var task = {}
+	task.id = "id" + Math.random().toString(16).slice(2)
+	task.category = selected;
+	task.desc = description;
+	task.startDate = startDate;
+	task.endDate = endDate;
+	task.priority = optradio;
+	
+
+	console.log(task);
 
 }
-}
 
+
+  
 
 
