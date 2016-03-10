@@ -88,24 +88,26 @@ function createTask() {
 function getSelectedValue() {
       var selected = document.getElementById("selectpicker").selectedIndex;
        var selectedvalue = document.getElementsByTagName("option")[selected].value;
-       
+       console.log(selectedvalue)
 
 }
 
 function getTaskValue() {
 	var description = document.getElementById('taskdesc').value;
+	console.log(description)
 	
 }
 
 function getStartDate() {
 	var startDate = document.getElementById("datepicker").value;
+	console.log(startDate)
 
 	
 }
 
 function getEndDate() {
 	var endDate = document.getElementById("datepicker2").value;
-	
+	console.log(endDate)
 }
 
 function getRadioValue() {
@@ -114,6 +116,7 @@ function getRadioValue() {
 		for(var i = 0; i < optradio.length; i++){
     		if(optradio[i].checked){
         		optradio = optradio[i].value;
+        		console.log(optradio);
         	
     		}
 		}
