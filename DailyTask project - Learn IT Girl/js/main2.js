@@ -24,6 +24,7 @@ function createTask() {
 
 	}
 	var task = {}
+	
 	task.id = "id" + Math.random().toString(16).slice(2)
 	task.category = selected;
 	task.desc = description;
@@ -34,7 +35,24 @@ function createTask() {
 
 	console.log(task);
 
+		if(typeof(Storage)!=="undefined")
+  				{
+			localStorage.setItem(task.id,JSON.stringify(task));
+
+				task = localStorage.getItem(task.id); 
+				task = JSON.parse(task);
+					console.log(task.desc)
+
+ 			 }
+			else
+				  {
+				 alert("oh no...")
+				  }
+
+
+
 }
+
 
 
   
