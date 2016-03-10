@@ -41,7 +41,7 @@ function createTask() {
 
 				task = localStorage.getItem(task.id); 
 				task = JSON.parse(task);
-					console.log(task.desc)
+				
 
  			 }
 			else
