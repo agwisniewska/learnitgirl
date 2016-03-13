@@ -48,13 +48,59 @@ function createTask() {
 				  {
 				 alert("oh no...")
 				  }
-
+	
+				 createDiv();
 
 
 }
 
 
 
-  
+var trash = '<div class="trash"> \
+		<span class="glyphicon glyphicon-trash" aria-hidden="true"> \
+		</span>\
+	</div>'
+
+var edit = '<div class="edit"> \
+		<span class="glyphicon glyphicon-edit" aria-hidden="true">\
+		 </span>\
+	</div>'
+
+var hamburgermenu= '<div class="dropdown hamburger"> \
+		<span class="glyphicon glyphicon-star" aria-hidden="true"> \
+			<div class="dropdown-content">\
+				<div id="td">todo</div>\
+				<div id="do">doing</div>\
+				<div id="dn">done</div> \
+			</div>\
+		</span>\
+	</div>'
+var task = '<h3 class="tasks">Task description\
+		<span class="label label-danger">To do</span>\
+		<span class="label label-success">Doing</span>\
+	</h3>'
+
+
+
+ 
+	
+
+
+
+
+
+
+   						
+
+
+
+function createDiv() {
+	$('.zadania').append('<div class= "box">' + trash + edit + hamburgermenu + task + '</div>');
+	console.log();
+
+}
+
+
+
 
 
