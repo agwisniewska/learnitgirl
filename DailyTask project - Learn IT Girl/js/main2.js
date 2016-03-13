@@ -49,7 +49,11 @@ function createTask() {
 				 alert("oh no...")
 				  }
 	
-				 createDiv();
+	
+	var div	=	'<div class	="box"	id="' + task.id + '">'	+ trash + edit + hamburgermenu 	+	'<h3>' 	+ task.desc +	'</h3>' +'</div>';
+	$('.zadania').append(div);
+
+
 
 
 }
@@ -75,10 +79,7 @@ var hamburgermenu= '<div class="dropdown hamburger"> \
 			</div>\
 		</span>\
 	</div>'
-var task = '<h3 class="tasks">Task description\
-		<span class="label label-danger">To do</span>\
-		<span class="label label-success">Doing</span>\
-	</h3>'
+
 
 
 
@@ -94,11 +95,7 @@ var task = '<h3 class="tasks">Task description\
 
 
 
-function createDiv() {
-	$('.zadania').append('<div class= "box">' + trash + edit + hamburgermenu + task + '</div>');
-	console.log();
 
-}
 
 
 
