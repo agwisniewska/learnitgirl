@@ -40,8 +40,14 @@ $('.buttonmenu').click(function() {
     	altFormat: "yy-mm-dd"
     });
 
+function DisableBeforeToday(date){
+    return [(date.getDate() < date.now()];
+}
+
+
     $(function() {
     $('.date-picker').datepicker( {
+        beforeShowDay: DisableBeforeToday
         changeMonth: true,
         changeYear: true,
         showButtonPanel: true,

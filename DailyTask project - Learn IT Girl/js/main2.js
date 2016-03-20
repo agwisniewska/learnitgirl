@@ -1,28 +1,26 @@
+
+
+
+
 function createTask() {
 
-      var selected = document.getElementById("selectpicker").selectedIndex;
-       var selectedvalue = document.getElementsByTagName("option")[selected].value;
-     
-
+	var selected = document.getElementById("selectpicker").selectedIndex;
+	var selectedValue = selected.value;
 	var description = document.getElementById('taskdesc').value;
-
-	
+		
 	var startDate = document.getElementById("datepicker").value;
-
-
-
+		
 	var endDate = document.getElementById("datepicker2").value;
-
-
+		
 	var optradio = document.getElementsByName('optradio');
 	var optradio;
 		for(var i = 0; i < optradio.length; i++){
-    		if(optradio[i].checked){
-        		optradio = optradio[i].value;
-        		
-        	}
+	    	if(optradio[i].checked){
+	        	optradio = optradio[i].value;
+	        }
+	    }
 
-	}
+
 	var task = {}
 	
 	task.id = "id" + Math.random().toString(16).slice(2)
@@ -41,6 +39,7 @@ function createTask() {
 
 				task = localStorage.getItem(task.id); 
 				task = JSON.parse(task);
+			
 				
 
  			 }
@@ -50,11 +49,13 @@ function createTask() {
 				  }
 	
 	
-	var div	=	'<div class	="box"	id="' + task.id + '">'	+ trash + edit + hamburgermenu 	+	'<h3>' 	+ task.desc +	'</h3>' +'</div>';
+	var div	=	'<div class	="box"	id="' + task.id + '">'+ trash + edit + hamburgermenu 	+	'<h3>' 	+ task.desc
+	+	'</h3>' +'</div>';
 	$('.zadania').append(div);
 
 
-
+	printKeys();
+ 
 
 }
 
@@ -80,10 +81,15 @@ var hamburgermenu= '<div class="dropdown hamburger"> \
 		</span>\
 	</div>'
 
+function printKeys() {
+
+for (var key in localStorage){
+   console.log(key)
+}
+
+}
 
 
-
- 
 	
 
 
