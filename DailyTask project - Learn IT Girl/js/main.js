@@ -63,9 +63,16 @@ $('#creator').click(function() {
 
 });
 
-$( ".trash" ).click(function() {
-  alert( "Handler for .click() called." );
+$('body').on('click', 'div.trash', function() {
+
+   $(this).parent().remove();
+   var id = $(this).parent().attr('id');
+   console.log(id);
+//    if (localStorage(key) == id ) {
+
+//    }
 });
+
 
 });
 

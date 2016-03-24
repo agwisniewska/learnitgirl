@@ -62,7 +62,7 @@ function createTask() {
 
 
 var trash = '<div class="trash"> \
-		<span class="glyphicon glyphicon-trash" aria-hidden="true" > \
+		<span class="glyphicon glyphicon-trash" aria-hidden="true"> \
 		</span>\
 	</div>'
 
@@ -81,6 +81,7 @@ var hamburgermenu= '<div class="dropdown hamburger"> \
 		</span>\
 	</div>'
 
+
 function printKeys() {
 
 for (var key in localStorage){
@@ -88,19 +89,18 @@ for (var key in localStorage){
 }
 }
 
-
-$(".trash").click(function(e) {
-    e.preventDefault();
-    $(this).parent().remove();
-    console.log(e);
-    console.log(this);
-
+$('body').on('click', 'div.trash', function() {
+    alert ("oh!")
 });
-// $(document).on('click', trash , function () {
-//    for (var key in localStorage) {
-// 		 delete localStorage[key];
-// 		}
+
+// 	$('.trash').onclick(function() {
+//     $(this).parent().remove();
 // });
+
+
+
+
+
 
 
 
