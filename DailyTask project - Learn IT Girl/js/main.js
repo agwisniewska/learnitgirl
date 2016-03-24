@@ -69,7 +69,12 @@ $('body').on('click', 'div.trash', function() {
    var id = $(this).parent().attr('id');
    console.log(id);
 //    if (localStorage(key) == id ) {
-
+    if(id in localStorage){
+       
+        localStorage.removeItem(id);  
+          } else {
+       alert('no');
+    }
 //    }
 });
 
