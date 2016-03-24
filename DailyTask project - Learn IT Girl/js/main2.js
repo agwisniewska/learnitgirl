@@ -54,6 +54,8 @@ function createTask() {
 
 
 	printKeys();
+	clearForm();
+
 
  
 
@@ -89,9 +91,6 @@ for (var key in localStorage){
 }
 }
 
-$('body').on('click', 'div.trash', function() {
-    alert ("oh!")
-});
 
 // 	$('.trash').onclick(function() {
 //     $(this).parent().remove();
@@ -99,7 +98,16 @@ $('body').on('click', 'div.trash', function() {
 
 
 
+function clearForm() {
 
+	$('#taskdesc').val('');
+	$('#selectpicker').val('');
+	$('#datepicker').val('');
+	$('#datepicker2').val('');
+
+
+
+}
 
 
 
