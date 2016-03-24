@@ -58,75 +58,15 @@ $("#createtask").click(function(){
 	// var date = $("#datepicker").datepicker( 'getDate' );
 	// console.log(date)
 // }
-
-
+$('#creator').click(function() {
+    $('#myModal').modal('hide');
 
 });
 
+$( ".trash" ).click(function() {
+  alert( "Handler for .click() called." );
+});
 
-
-
-// $("input:radio[name=optradio]").click(function() {
-//      var value = $('input:radio[name=optradio]:checked').val();
-//     	console.log(value);
-// });
-
-
-
-
-
-
-
-
-// function createTask() {
-// 	getTaskValue();
-// 	getSelectedValue()
-// 	getRadioValue();
-// 	getStartDate();
-// 	getEndDate();
-
-
-	
-// }
-
-// function getSelectedValue() {
-//       var selected = document.getElementById("selectpicker").selectedIndex;
-//        var selectedvalue = document.getElementsByTagName("option")[selected].value;
-//        console.log(selectedvalue)
-
-// }
-
-// function getTaskValue() {
-// 	var description = document.getElementById('taskdesc').value;
-// 	console.log(description)
-	
-// }
-
-// function getStartDate() {
-// 	var startDate = document.getElementById("datepicker").value;
-// 	console.log(startDate)
-
-	
-// }
-
-// function getEndDate() {
-// 	var endDate = document.getElementById("datepicker2").value;
-// 	console.log(endDate)
-// }
-
-// function getRadioValue() {
-// 	var optradio = document.getElementsByName('optradio');
-// 	var optradio;
-// 		for(var i = 0; i < optradio.length; i++){
-//     		if(optradio[i].checked){
-//         		optradio = optradio[i].value;
-//         		console.log(optradio);
-        	
-//     		}
-// 		}
-
-
-// }
-
+});
 
 

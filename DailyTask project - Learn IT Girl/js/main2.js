@@ -47,12 +47,14 @@ function createTask() {
 				  }
 	
 	
-	var div	=	'<div class	="box"	id="' + task.id + '">'+ trash + edit + hamburgermenu 	+	'<h3>' 	+ task.desc
-	+	'</h3>' +'</div>';
+	var div	=	'<div class	="box"	id="' + task.id + '">'+ trash + edit + hamburgermenu +	'<h3>' 	+ task.desc + " "
+	+ task.startDate + " " +  task.endDate +  " " + optradio + " " + selected + '</h3>' + '</div>';
+	
 	$('.zadania').append(div);
 
 
 	printKeys();
+
  
 
 }
@@ -60,7 +62,7 @@ function createTask() {
 
 
 var trash = '<div class="trash"> \
-		<span class="glyphicon glyphicon-trash" aria-hidden="true"> \
+		<span class="glyphicon glyphicon-trash" aria-hidden="true" > \
 		</span>\
 	</div>'
 
@@ -84,8 +86,22 @@ function printKeys() {
 for (var key in localStorage){
    console.log(key)
 }
-
 }
+
+
+$(".trash").click(function(e) {
+    e.preventDefault();
+    $(this).parent().remove();
+    console.log(e);
+    console.log(this);
+
+});
+// $(document).on('click', trash , function () {
+//    for (var key in localStorage) {
+// 		 delete localStorage[key];
+// 		}
+// });
+
 
 
 
