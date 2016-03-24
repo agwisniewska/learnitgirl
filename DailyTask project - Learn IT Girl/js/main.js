@@ -37,30 +37,17 @@ $('.buttonmenu').click(function() {
 
 
     $('#datepicker').datepicker({
-    	altFormat: "yy-mm-dd"
-    });
-
-function DisableBeforeToday(date){
-    return [(date.getDate() < date.now()];
-}
-
-
-    $(function() {
-    $('.date-picker').datepicker( {
-        beforeShowDay: DisableBeforeToday
-        changeMonth: true,
-        changeYear: true,
-        showButtonPanel: true,
-        dateFormat: 'MM yy',
-        onClose: function(dateText, inst) { 
-            $(this).datepicker('setDate', new Date(inst.selectedYear, inst.selectedMonth, 1));
-        }
-    });
+    	altFormat: "yy-mm-dd",
+        minDate: 0,
+     
 });
 
-    $('#datepicker').datepicker();
 
-    $('#datepicker2').datepicker();
+ 
+    $('#datepicker2').datepicker({
+        altFormat: "yy-mm-dd",
+        minDate: 0,
+    });
 
 
 $("#createtask").click(function(){
@@ -74,7 +61,7 @@ $("#createtask").click(function(){
 
 
 
-
+});
 
 
 
@@ -89,6 +76,57 @@ $("#createtask").click(function(){
 
 
 
-});
+
+
+// function createTask() {
+// 	getTaskValue();
+// 	getSelectedValue()
+// 	getRadioValue();
+// 	getStartDate();
+// 	getEndDate();
+
+
+	
+// }
+
+// function getSelectedValue() {
+//       var selected = document.getElementById("selectpicker").selectedIndex;
+//        var selectedvalue = document.getElementsByTagName("option")[selected].value;
+//        console.log(selectedvalue)
+
+// }
+
+// function getTaskValue() {
+// 	var description = document.getElementById('taskdesc').value;
+// 	console.log(description)
+	
+// }
+
+// function getStartDate() {
+// 	var startDate = document.getElementById("datepicker").value;
+// 	console.log(startDate)
+
+	
+// }
+
+// function getEndDate() {
+// 	var endDate = document.getElementById("datepicker2").value;
+// 	console.log(endDate)
+// }
+
+// function getRadioValue() {
+// 	var optradio = document.getElementsByName('optradio');
+// 	var optradio;
+// 		for(var i = 0; i < optradio.length; i++){
+//     		if(optradio[i].checked){
+//         		optradio = optradio[i].value;
+//         		console.log(optradio);
+        	
+//     		}
+// 		}
+
+
+// }
+
 
 

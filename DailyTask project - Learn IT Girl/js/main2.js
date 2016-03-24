@@ -1,7 +1,5 @@
 
 
-
-
 function createTask() {
 
 	var selected = document.getElementById("selectpicker").selectedIndex;
@@ -88,22 +86,6 @@ for (var key in localStorage){
 }
 
 }
-
-
-	
-
-
-
-
-
-
-   						
-
-
-
-
-
-
 
 
 
