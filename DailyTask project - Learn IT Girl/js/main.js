@@ -84,7 +84,6 @@ $('body').on('click', 'div.trash', function() {
 // var label = '<span class="label label-warning">TO DO</span>'
 //  document.getElementById('DivToPrintOut').appendChild(label);
 // });
-
 });
 
 

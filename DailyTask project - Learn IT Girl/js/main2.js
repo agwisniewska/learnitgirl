@@ -67,7 +67,7 @@ function createTask() {
 
 
 
-	printKeys();
+	
 	clearForm();
 
 
@@ -105,16 +105,37 @@ var hamburgermenu= '<div class="dropdown hamburger"> \
 	</div>'
 
 
-			
 
+
+			
 
 function printKeys() {
 
-	for (var key in localStorage) {
-   		console.log(key)
+	var values = []
+ 	keys = Object.keys(localStorage)
+    // i = keys.length;
+   
 
+   for (var i=0; i <keys.length; i++) {
+   // while ( i-- ) {
+        values.push(localStorage.getItem(keys[i]) );
+        document.getElementById('DivToPrintOut').innerHTML =values; 
+    }
+
+    return values;
 }
-}
+	
+ 	
+ 
+// var key = i
+// for (var i=0; i< localStorage.length; i++) { 
+//  var key = i
+//   localStorage.getItem(i);
+//  document.getElementById('DivToPrintOut').innerHTML = key;
+// }
+
+
+
 
 
 
