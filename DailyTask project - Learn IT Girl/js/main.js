@@ -78,6 +78,12 @@ $('body').on('click', 'div.trash', function() {
 //    }
 });
 
+// $('#td').click(function () {
+
+
+// var label = '<span class="label label-warning">TO DO</span>'
+//  document.getElementById('DivToPrintOut').appendChild(label);
+// });
 
 });
 

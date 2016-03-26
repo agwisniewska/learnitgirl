@@ -47,10 +47,24 @@ function createTask() {
 				  }
 	
 	
-	var div	=	'<div class	="box"	id="' + task.id + '">'+ trash + edit + hamburgermenu +	'<h3>' 	+ task.desc + " "
-	+ task.startDate + " " +  task.endDate +  " " + optradio + " " + selected + '</h3>' + '</div>';
+	for (var i = 0; i < localStorage.length; i++){
+
+		var div	=	'<div class	="box"	id="' + task.id + '">'+ trash + edit + hamburgermenu +	'<h3>' 	+ task.desc + " "
+		+ task.startDate + " " +  task.endDate +  " " + optradio + " " + selected + '</h3>' + '</div>';
+		
+		}
+
+		$('.zadania').append(div);
 	
-	$('.zadania').append(div);
+	
+		
+		
+		
+
+
+
+	
+
 
 
 	printKeys();
@@ -60,6 +74,13 @@ function createTask() {
  
 
 }
+
+
+
+
+// $('#do').click(function () {
+// 	$('.box').append('<span class="label label-success">DOING</span>');
+// });
 
 
 
@@ -84,12 +105,17 @@ var hamburgermenu= '<div class="dropdown hamburger"> \
 	</div>'
 
 
+			
+
+
 function printKeys() {
 
-for (var key in localStorage){
-   console.log(key)
+	for (var key in localStorage) {
+   		console.log(key)
+
 }
 }
+
 
 
 // 	$('.trash').onclick(function() {
@@ -108,6 +134,16 @@ function clearForm() {
 
 
 }
+
+// var todo = document.getElementById("td");
+// var doing = document.getElementById("do");
+// var done = document.getElementById("dn");
+
+// $('#td').click(function () {
+// 	var label = '<span class="label label-warning">TO DO</span>';
+//  	document.getElementById('DivToPrintOut').appendChild(label);
+// });
+
 
 
 
