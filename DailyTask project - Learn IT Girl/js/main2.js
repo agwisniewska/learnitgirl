@@ -19,9 +19,9 @@ function createTask() {
 	    }
 
 
+
 	var task = {}
 	
-	task.id = "id" + Math.random().toString(16).slice(2)
 	task.category = selected;
 	task.desc = description;
 	task.startDate = startDate;
@@ -48,6 +48,7 @@ function createTask() {
 	
 	
 	for (var i = 0; i < localStorage.length; i++){
+		task.id = "id" + Math.random().toString(16).slice(2)
 
 		var div	=	'<div class	="box"	id="' + task.id + '">'+ trash + edit + hamburgermenu +	'<h3>' 	+ task.desc + " "
 		+ task.startDate + " " +  task.endDate +  " " + optradio + " " + selected + '</h3>' + '</div>';
@@ -55,16 +56,6 @@ function createTask() {
 		}
 
 		$('.zadania').append(div);
-	
-	
-		
-		
-		
-
-
-
-	
-
 
 
 	
@@ -74,14 +65,6 @@ function createTask() {
  
 
 }
-
-
-
-
-// $('#do').click(function () {
-// 	$('.box').append('<span class="label label-success">DOING</span>');
-// });
-
 
 
 var trash = '<div class="trash"> \
@@ -105,43 +88,20 @@ var hamburgermenu= '<div class="dropdown hamburger"> \
 	</div>'
 
 
-
-
-			
-
 function printKeys() {
-
-	var values = []
- 	keys = Object.keys(localStorage)
-    // i = keys.length;
-   
-
-   for (var i=0; i <keys.length; i++) {
-   // while ( i-- ) {
-        values.push(localStorage.getItem(keys[i]) );
-        document.getElementById('DivToPrintOut').innerHTML =values; 
-    }
-
-    return values;
+for(var i=0, len=localStorage.length; i<len; i++) {
+    var key = localStorage.key(i);
+    var value = localStorage[key];
+    
+    console.log(key + " => " + value);
+    var div	=	'<div class	="box"	id="' + key + '">'+ trash + edit + hamburgermenu +	'<h3>' 	+ value+ '</h3>' + '</div>';
+   	$('.zadania').append(div);
 }
+
+}
+
+
 	
- 	
- 
-// var key = i
-// for (var i=0; i< localStorage.length; i++) { 
-//  var key = i
-//   localStorage.getItem(i);
-//  document.getElementById('DivToPrintOut').innerHTML = key;
-// }
-
-
-
-
-
-
-// 	$('.trash').onclick(function() {
-//     $(this).parent().remove();
-// });
 
 
 
@@ -156,14 +116,6 @@ function clearForm() {
 
 }
 
-// var todo = document.getElementById("td");
-// var doing = document.getElementById("do");
-// var done = document.getElementById("dn");
-
-// $('#td').click(function () {
-// 	var label = '<span class="label label-warning">TO DO</span>';
-//  	document.getElementById('DivToPrintOut').appendChild(label);
-// });
 
 
 
