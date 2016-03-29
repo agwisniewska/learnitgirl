@@ -3,7 +3,9 @@
 function createTask() {
 
 	var selected = document.getElementById("selectpicker").selectedIndex;
-	var selectedValue = selected.value;
+
+	selected = checkValue();
+
 	var description = document.getElementById('taskdesc').value;
 		
 	var startDate = document.getElementById("datepicker").value;
@@ -66,6 +68,21 @@ function createTask() {
 
 }
 
+function checkValue() {
+	
+	var selected = document.getElementById("selectpicker").selectedIndex;
+	// var selectedValue = selected.value;
+	
+	if (selected === 1) {
+		var selected = "work";
+		return selected;
+	}
+	else if (selected === 0) {
+		var selected = "home";
+		return selected;
+	}
+	
+}
 
 var trash = '<div class="trash"> \
 		<span class="glyphicon glyphicon-trash" aria-hidden="true"> \
@@ -127,6 +144,8 @@ $(window).resize(function() {
 $('.box').css('height', window.innerHeight);
 
 });
+
+
 
 
 
