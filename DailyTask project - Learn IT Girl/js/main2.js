@@ -21,6 +21,7 @@ function createTask() {
 
 
 	var task = {}
+		task.id = "id" + Math.random().toString(16).slice(2)
 	
 	task.category = selected;
 	task.desc = description;
@@ -48,7 +49,6 @@ function createTask() {
 	
 	
 	for (var i = 0; i < localStorage.length; i++){
-		task.id = "id" + Math.random().toString(16).slice(2)
 
 		var div	=	'<div class	="box"	id="' + task.id + '">'+ trash + edit + hamburgermenu +	'<h3>' 	+ task.desc + " "
 		+ task.startDate + " " +  task.endDate +  " " + optradio + " " + selected + '</h3>' + '</div>';
@@ -89,14 +89,19 @@ var hamburgermenu= '<div class="dropdown hamburger"> \
 
 
 function printKeys() {
-for(var i=0, len=localStorage.length; i<len; i++) {
-    var key = localStorage.key(i);
-    var value = localStorage[key];
-    
-    console.log(key + " => " + value);
-    var div	=	'<div class	="box"	id="' + key + '">'+ trash + edit + hamburgermenu +	'<h3>' 	+ value+ '</h3>' + '</div>';
-   	$('.zadania').append(div);
-}
+	for(var i=0, len=localStorage.length; i<len; i++) {
+	    var key = localStorage.key(i);
+	    var value = localStorage[key];
+	    console.log(typeof(value));
+	    
+	    console.log(key + " => " + value)
+
+	   	var myobj = JSON.parse(localStorage[key]);
+	    console.log(typeof(myobj));
+	    console.log(myobj.category)
+	    var div	=	'<div class	="box"	id="' + key + '">'+ trash + edit + hamburgermenu +	'<h3>' 	+ myobj.category + " " + myobj.desc + " " + " " + myobj.startDate + " " + " " + myobj.endDate + "" + '</h3>' + '</div>';
+	   	$('.zadania').append(div);
+	}
 
 }
 
@@ -115,6 +120,13 @@ function clearForm() {
 
 
 }
+
+
+$(window).resize(function() {
+
+$('.box').css('height', window.innerHeight);
+
+});
 
 
 
