@@ -83,7 +83,42 @@ $('body').on('click', 'div.edit', function() {
   //           optradio = optradio[i].value;
   //         }
   //     }
+  var task = {}
+    task.id = id;
+  
+  task.category = object.category;
+  task.desc = object.desc;
+  task.startDate = object.startDate;
+  task.endDate = object. endDate;
+ 
+  
 
+  console.log(task);
+
+    if(typeof(Storage)!=="undefined")
+          {
+      localStorage.setItem(task.id,JSON.stringify(task));
+
+        task = localStorage.getItem(task.id); 
+        task = JSON.parse(task);
+      
+        
+
+       }
+      else
+          {
+         alert("oh no...")
+          }
+  
+  
+  for (var i = 0; i < localStorage.length; i++){
+
+    var div = '<div class ="box"  id="' + task.id + '">'+ trash + edit + hamburgermenu +  '<h3>'  + task.desc + " "
+    + task.startDate + " " +  task.endDate +  " " + optradio + " " + selected + '</h3>' + '</div>';
+    
+    }
+
+    $('.zadania').append(div);
 
 
 
