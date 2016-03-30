@@ -73,6 +73,19 @@ $('body').on('click', 'div.edit', function() {
     document.getElementById("datepicker3").value = object.startDate;
     document.getElementById("datepicker4").value =  object.endDate;
     document.getElementsByName('optradio').value = object.priority;
+    $( "#Modal input[type=radio][value="+ object.priority + "]" ).prop('checked', true);
+
+
+  //   var optradio = document.getElementsByName('optradio');
+  // var optradio;
+  //   for(var i = 0; i < optradio.length; i++){
+  //       if(optradio[i].checked){
+  //           optradio = optradio[i].value;
+  //         }
+  //     }
+
+
+
 
   
 
