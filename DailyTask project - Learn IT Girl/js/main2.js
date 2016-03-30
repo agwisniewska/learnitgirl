@@ -116,7 +116,7 @@ function printKeys() {
 	   	var myobj = JSON.parse(localStorage[key]);
 	    console.log(typeof(myobj));
 	    console.log(myobj.category)
-	    var div	=	'<div class	="box"	id="' + key + '">'+ trash + edit + hamburgermenu +	'<h3>' 	+ myobj.category + " " + myobj.desc + " " + " " + myobj.startDate + " " + " " + myobj.endDate + "" + '</h3>' + '</div>';
+	    var div	=	'<div class	="box"	id="' + key + '">'+ trash + edit + hamburgermenu +	'<h3>' + myobj.startDate + " "  + myobj.endDate + '<p>' + myobj.category + " " +  myobj.desc + '</p>' + '</h3>' +'</div>';
 	   	$('.zadania').append(div);
 	}
 

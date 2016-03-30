@@ -33,14 +33,20 @@ html {
 
 }
 
-h3, p {
-
-
+h3 {
 	color: #CC0066;
 	padding-top: 10px;
 	vertical-align:middle;
 	margin-left: 40px;
 
+
+}
+
+p {
+	margin-top: 10px;
+	color: #CC0066;
+	font-weight: bold;
+	margin-left: 10px;
 }
 
 

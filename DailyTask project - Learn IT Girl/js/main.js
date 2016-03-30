@@ -54,15 +54,32 @@ $("#createtask").click(function(){
         $("#myModal").modal();
     });
 
-// function getStartDate() {
-	// var date = $("#datepicker").datepicker( 'getDate' );
-	// console.log(date)
-// }
+
 $('#creator').click(function() {
     $('#myModal').modal('hide');
 
 });
+// update task
+$('body').on('click', 'div.edit', function() {
+  $("#Modal").modal();
 
+    var id = $(this).parent().attr('id');
+    var value = localStorage[id];
+  
+    var object = JSON.parse(value);
+   
+    $('#taskdescription').val(object.desc);
+    $('#selectpickersecond').val(object.category);
+    document.getElementById("datepicker3").value = object.startDate;
+    document.getElementById("datepicker4").value =  object.endDate;
+    document.getElementsByName('optradio').value = object.priority;
+
+  
+
+
+
+});
+// function executes on trash click which removes data (div) from main view and localStorage
 $('body').on('click', 'div.trash', function() {
 
    $(this).parent().remove();
@@ -72,18 +89,11 @@ $('body').on('click', 'div.trash', function() {
     if(id in localStorage){
        
         localStorage.removeItem(id);  
-          } else {
-       alert('no');
-    }
+          }
 //    }
 });
 
-// $('#td').click(function () {
 
-
-// var label = '<span class="label label-warning">TO DO</span>'
-//  document.getElementById('DivToPrintOut').appendChild(label);
-// });
 });
 
 
