@@ -122,11 +122,6 @@ function printKeys() {
 
 }
 
-
-	
-
-
-
 function clearForm() {
 
 	$('#taskdesc').val('');
@@ -134,59 +129,7 @@ function clearForm() {
 	$('#datepicker').val('');
 	$('#datepicker2').val('');
 
-
-
 }
-
-
-
-
-// update task
-$('body').on('click', 'div.edit', function() {
-  $("#Modal").modal();
-
-    var id = $(this).parent().attr('id');
-    var value = localStorage[id];
-  
-    var object = JSON.parse(value);
-   
-    $('#taskdescription').val(object.desc);
-    $('#selectpickersecond').val(object.category);
-    document.getElementById("datepicker3").value = object.startDate;
-    document.getElementById("datepicker4").value =  object.endDate;
-    document.getElementsByName('optradio2').value = object.priority;
-    $( "#Modal:input[type=radio][value="+ object.priority + "]" ).prop('checked');
-
-    
-    
-
-
-	
-
-
-
-
-  
-
-
-
-});
-// function executes on trash click which removes data (div) from main view and localStorage
-
-function remove() {
-	$('body').on('click', 'div.trash') 
-
-   $(this).parent().remove();
-   var id = $(this).parent().attr('id');
-   console.log(id);
-//    if (localStorage(key) == id ) {
-    if(id in localStorage){
-       
-        localStorage.removeItem(id);  
-          }
-   }
-
-
 
 function updateTask() {
 
@@ -201,6 +144,7 @@ function updateTask() {
 	var endDate = document.getElementById("datepicker4").value;
 		
 	var optradio = document.getElementsByName('optradio2');
+	var task_id = document.getElementById("task_id").value;
 	var optradio;
 		for(var i = 0; i < optradio.length; i++){
 	    	if(optradio[i].checked){
@@ -208,14 +152,9 @@ function updateTask() {
 	        }
 	    }
 
-
-
 	var task = {}
 
-		task.id = "id" + Math.random().toString(16).slice(2)
-	
-	
-	
+	task.id = task_id;
 	task.category = selected;
 	task.desc = description;
 	task.startDate = startDate;
@@ -225,36 +164,6 @@ function updateTask() {
 
 	console.log(task);
 
-// 		if(typeof(Storage)!=="undefined")
-//   				{
-// 			localStorage.setItem(task.id,JSON.stringify(task));
-
-// 				task = localStorage.getItem(task.id); 
-// 				task = JSON.parse(task);
-			
-				
-
-//  			 }
-// 			else
-// 				  {
-// 				 alert("oh no...")
-// 				  }
-	
-	
-// 	for (var i = 0; i < localStorage.length; i++){
-
-// 		var div	=	'<div class	="box"	id="' + task.id + '">'+ trash + edit + hamburgermenu +	'<h3>' 	+ task.desc + " "
-// 		+ task.startDate + " " +  task.endDate +  " " + optradio + " " + selected + '</h3>' + '</div>';
-		
-// 		}
-
-// 		$('.zadania').append(div);
-
-
-	
-// 	clearForm();
-
-// }
 
 	if(typeof(Storage)!=="undefined")
   				{
@@ -271,16 +180,13 @@ function updateTask() {
 				 alert("oh no...")
 				  }
 	
-	
-	for (var i = 0; i < localStorage.length; i++){
+	displayDataFromLocalStorage();
 
-		var div	=	'<div class	="box"	id="' + task.id + '">'+ trash + edit + hamburgermenu +	'<h3>' 	+ task.desc + " "
-		+ task.startDate + " " +  task.endDate +  " " + optradio + " " + selected + '</h3>' + '</div>';
-		
-		}
+}
 
-		$('.zadania').append(div);
-
+function displayDataFromLocalStorage(){
+	$(".zadania").empty()
+	printKeys();
 }
 
 
