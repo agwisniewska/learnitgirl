@@ -57,8 +57,7 @@ function createTask() {
 		
 		}
 
-		$('.zadania').append(div);
-
+displayDataFromLocalStorage();
 
 	
 	clearForm();

@@ -59,6 +59,11 @@ $('#creator').click(function() {
     $('#myModal').modal('hide');
 
 });
+
+$('#creator2').click(function() {
+    $('#Modal').modal('hide');
+
+});
 // update task
 $('body').on('click', 'div.edit', function() {
   $("#Modal").modal();
@@ -68,13 +73,16 @@ $('body').on('click', 'div.edit', function() {
     var value = localStorage[id];
   
     var object = JSON.parse(value);
+    console.log(object.priority)
     $('#task_id').val(id);
     $('#taskdescription').val(object.desc);
     $('#selectpickersecond').val(object.category);
     document.getElementById("datepicker3").value = object.startDate;
     document.getElementById("datepicker4").value =  object.endDate;
-    document.getElementsByName('optradio').value = object.priority;
-    // $( "#Modal:input[type=radio][value="+ object.priority + "]" ).prop('checked');
+    $("input[name=optradio2][value=" + object.priority + "]").prop('checked', true);
+
+
+
 
 
 
@@ -92,6 +100,7 @@ $('body').on('click', 'div.trash', function() {
           }
 //    }
 });
+
 
 
 });
