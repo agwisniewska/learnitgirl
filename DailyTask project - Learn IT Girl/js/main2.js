@@ -4,6 +4,8 @@ function createTask() {
 
 	var selected = document.getElementById("selectpicker").selectedIndex;
 
+	var status = document.getElementById("taskstatus").value;
+
 	selected = checkValue();
 
 	var description = document.getElementById('taskdesc').value;
@@ -24,7 +26,8 @@ function createTask() {
 
 	var task = {}
 		task.id = "id" + Math.random().toString(16).slice(2)
-	
+
+	task.taskstatus = status;
 	task.category = selected;
 	task.desc = description;
 	task.startDate = startDate;
@@ -93,7 +96,7 @@ var edit = '<div class="edit"> \
 		 </span>\
 	</div>'
 
-	
+
 												       
 var hamburgermenu= '<div class="dropdown hamburger"> \
 		<span class="glyphicon glyphicon-star" aria-hidden="true"> \

@@ -104,9 +104,20 @@ $('body').on('click', 'div.trash', function() {
 $('body').on('mouseover', 'div#dn', function () {
    
    $(this).parent().parent().parent().siblings('h3').find('p').css("text-decoration", "line-through"); 
+    var id = $(this).parent().parent().parent().parent().attr('id');
+    console.log(id);
+   
+   var value = localStorage[id];
+   var object = JSON.parse(value);
+   console.log(object);
+   object.taskstatus = "done";
+   localStorage.setItem(id, JSON.stringify(object));   
 
 
-})
+console.log(localStorage);
+
+
+});
 
 });
 
