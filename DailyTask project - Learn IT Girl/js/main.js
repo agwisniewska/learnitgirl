@@ -101,7 +101,12 @@ $('body').on('click', 'div.trash', function() {
 //    }
 });
 
+$('body').on('mouseover', 'div#dn', function () {
+   
+   $(this).parent().parent().parent().siblings('h3').find('p').css("text-decoration", "line-through"); 
 
+
+})
 
 });
 

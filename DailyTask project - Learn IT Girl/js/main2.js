@@ -93,6 +93,8 @@ var edit = '<div class="edit"> \
 		 </span>\
 	</div>'
 
+	
+												       
 var hamburgermenu= '<div class="dropdown hamburger"> \
 		<span class="glyphicon glyphicon-star" aria-hidden="true"> \
 			<div class="dropdown-content">\
