@@ -2,11 +2,11 @@
 
 function createTask() {
 
-	var selected = document.getElementById("selectpicker").selectedIndex;
+
 
 	var status = document.getElementById("taskstatus").value;
 
-	selected = checkValue();
+	var selected = $( "#selectpicker option:selected" ).text();
 
 	var description = document.getElementById('taskdesc').value;
 		
@@ -73,21 +73,21 @@ $(".zadania").empty()
 
 }
 
-function checkValue() {
+// function checkValue() {
 	
-	var selected = document.getElementById("selectpicker").selectedIndex;
-	// var selectedValue = selected.value;
+// 	var selected = document.getElementById("selectpicker").value;
+// 	console.log(selected);
 	
-	if (selected === 1) {
-		var selected = "work";
-		return selected;
-	}
-	else if (selected === 0) {
-		var selected = "home";
-		return selected;
-	}
+// 	if (selected === 1) {
+// 		var selected = "work";
+// 		return selected;
+// 	}
+// 	else if (selected === 0) {
+// 		var selected = "home";
+// 		return selected;
+// 	}
 	
-}
+// }
 
 var trash = '<div class="trash"> \
 		<span class="glyphicon glyphicon-trash" aria-hidden="true"> \
@@ -130,6 +130,8 @@ function printKeys() {
 	}
 
 }
+
+
 
 function checkStatus(category, description, status) {
 	if (status === "done") {

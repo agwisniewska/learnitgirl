@@ -130,6 +130,43 @@ console.log(localStorage);
 
 });
 
+$('#work').click(function () {
+  $('.zadania').empty();
+    for(var i=0; i<localStorage.length; i++) {
+         var key = localStorage.key(i);
+         var value = localStorage[key];
+         
+         var myobj = JSON.parse(value);
+         console.log(typeof(myobj));
+         var category = myobj.category;
+         
+            if (category === "Work") {
+                 var div  = '<div class ="box"  id="' + key + '">'+ trash + edit + hamburgermenu +  '<h3>' + myobj.startDate + " "  + myobj.endDate + checkStatus(myobj.category, myobj.desc, myobj.taskstatus)  +  '</h3>' +'</div>';
+                  $('.zadania').append(div)
+            }
+
+       }
+});
+
+
+
+$('#home').click(function () {
+  $('.zadania').empty();
+    for(var i=0; i<localStorage.length; i++) {
+         var key = localStorage.key(i);
+         var value = localStorage[key];
+         
+         var myobj = JSON.parse(value);
+         console.log(typeof(myobj));
+         var category = myobj.category;
+         
+            if (category === "home") {
+                 var div  = '<div class ="box"  id="' + key + '">'+ trash + edit + hamburgermenu +  '<h3>' + myobj.startDate + " "  + myobj.endDate + checkStatus(myobj.category, myobj.desc, myobj.taskstatus)  +  '</h3>' +'</div>';
+                  $('.zadania').append(div)
+            }
+
+       }
+});
 
 });
 
