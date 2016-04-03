@@ -115,20 +115,21 @@ console.log(localStorage);
 
 
 });
-// $('body').on('mouseover', 'div#do', function () {
+$('body').on('mouseover', 'div#do', function () {
    
-//    $(this).parent().parent().parent().parent().append('<span class="label label-success">doing</span>');
-//     var id = $(this).parent().parent().parent().parent().attr('id');
-//    var value = localStorage[id];
-//    var object = JSON.parse(value);
-//    object.taskstatus = "doing";
-//    localStorage.setItem(id, JSON.stringify(object));   
+   $(this).parent().parent().parent().parent().append('<span class="label label-success">doing</span>');
+    var id = $(this).parent().parent().parent().parent().attr('id');
+   var value = localStorage[id];
+   var object = JSON.parse(value);
+   object.taskstatus = "doing";
+   localStorage.setItem(id, JSON.stringify(object));   
 
 
-// console.log(localStorage);
+console.log(localStorage);
 
 
-// });
+});
+
 
 });
 

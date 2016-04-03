@@ -135,9 +135,13 @@ function checkStatus(category, description, status) {
 	if (status === "done") {
 		return  '<p class="done">' + category + " " +  description + '</p>'
 	}
-	else {
-		return '<p>' + category + " " +  description + '</p>'
+	else if (status=== "todo" ) {
+		return '<p>' + '<span class="label label-danger">To do</span>' + category + " " +  description + '</p>'
 	}
+	else if (status === "doing") {
+		return '<p>' + '<span class="label label-success">Doing</span>' + category + " " +  description + '</p>'
+	}
+	
 
 }
 function clearForm() {
