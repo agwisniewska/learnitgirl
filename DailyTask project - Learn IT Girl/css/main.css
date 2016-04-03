@@ -187,6 +187,16 @@ h2 {
 .label {
 	font-size: 10px;
 }
+.label-danger {
+	float: right;
+	margin-right: 525px;
+	margin-top: 7px;
+}
+.label-success {
+	float: right;
+	margin-right: 525px;
+	margin-top: 7px;
+}
 
 .glyphicon-trash {
 	margin-right: 10px;
@@ -253,4 +263,9 @@ h4 {
 .ui-state-error .ui-icon,
 .ui-state-error-text .ui-icon {
     background-image: url("css/images/ui-icons_cd0a0a_256x240.png");
+}
+
+.done  {
+    text-decoration: line-through;
+
 }

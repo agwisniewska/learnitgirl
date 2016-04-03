@@ -60,7 +60,10 @@ function createTask() {
 		
 		}
 
-displayDataFromLocalStorage();
+$(".zadania").empty()
+	
+	printKeys();
+
 
 	
 	clearForm();
@@ -119,14 +122,24 @@ function printKeys() {
 
 	   	var myobj = JSON.parse(localStorage[key]);
 	    console.log(typeof(myobj));
-	   
-		checkStatus();
-	    var div	=	'<div class	="box"	id="' + key + '">'+ trash + edit + hamburgermenu +	'<h3>' + myobj.startDate + " "  + myobj.endDate + '<p>' + myobj.category + " " +  myobj.desc + '</p>' + '</h3>' +'</div>';
+	 
+	    var div	=	'<div class	="box"	id="' + key + '">'+ trash + edit + hamburgermenu +	'<h3>' + myobj.startDate + " "  + myobj.endDate + checkStatus(myobj.category, myobj.desc, myobj.taskstatus)  +  '</h3>' +'</div>';
+	   	
+
 	   	$('.zadania').append(div);
 	}
 
 }
 
+function checkStatus(category, description, status) {
+	if (status === "done") {
+		return  '<p class="done">' + category + " " +  description + '</p>'
+	}
+	else {
+		return '<p>' + category + " " +  description + '</p>'
+	}
+
+}
 function clearForm() {
 
 	$('#taskdesc').val('');
@@ -185,40 +198,34 @@ function updateTask() {
 				 alert("oh no...")
 				  }
 	
-	displayDataFromLocalStorage();
-
-}
-
-function displayDataFromLocalStorage(){
-	
 	$(".zadania").empty()
 	
 	printKeys();
-	
+
 }
 
-	
-
-function checkStatus() {
-	// var array = [];
-			for(var i=0; i<localStorage.length; i++) {
-	    		var key = localStorage.key(i);
-	    		var value = localStorage[key];
-	    		console.log(typeof(value));
+// function checkStatus() {
+// 	// var array = [];
+// 			for(var i=0; i<localStorage.length; i++) {
+// 	    		var key = localStorage.key(i);
+// 	    		var value = localStorage[key];
+// 	    		console.log(typeof(value));
 	    
-	    		console.log(key + " => " + value)
+// 	    		console.log(key + " => " + value)
 
-	   			var myobj = JSON.parse(localStorage[key]);
-	    		console.log(typeof(myobj));
-				console.log(myobj.taskstatus)
-				if (myobj.taskstatus === "done") {
-					$('#'+key +' p').css("text-decoration", "line-through"); 
-				}
+// 	   			var myobj = JSON.parse(localStorage[key]);
+// 	    		console.log(typeof(myobj));
+// 				console.log(myobj.taskstatus)
+// 				if (myobj.taskstatus === "done") {
+// 					$('#'+ key +' p').css("text-decoration", "line-through"); 
+// 	   		}
 		
-}
+			
+		
+// }
 
 
-}
+// }
 
 
 
