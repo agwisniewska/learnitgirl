@@ -160,7 +160,7 @@ $('#home').click(function () {
          console.log(typeof(myobj));
          var category = myobj.category;
          
-            if (category === "home") {
+            if (category === "Home") {
                  var div  = '<div class ="box"  id="' + key + '">'+ trash + edit + hamburgermenu +  '<h3>' + myobj.startDate + " "  + myobj.endDate + checkStatus(myobj.category, myobj.desc, myobj.taskstatus)  +  '</h3>' +'</div>';
                   $('.zadania').append(div)
             }

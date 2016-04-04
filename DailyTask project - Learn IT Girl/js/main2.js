@@ -73,22 +73,6 @@ $(".zadania").empty()
 
 }
 
-// function checkValue() {
-	
-// 	var selected = document.getElementById("selectpicker").value;
-// 	console.log(selected);
-	
-// 	if (selected === 1) {
-// 		var selected = "work";
-// 		return selected;
-// 	}
-// 	else if (selected === 0) {
-// 		var selected = "home";
-// 		return selected;
-// 	}
-	
-// }
-
 var trash = '<div class="trash"> \
 		<span class="glyphicon glyphicon-trash" aria-hidden="true"> \
 		</span>\
@@ -113,7 +97,7 @@ var hamburgermenu= '<div class="dropdown hamburger"> \
 
 
 function printKeys() {
-	for(var i=0, len=localStorage.length; i<len; i++) {
+	for(var i=0; i<localStorage.length; i++) {
 	    var key = localStorage.key(i);
 	    var value = localStorage[key];
 	    console.log(typeof(value));
@@ -123,8 +107,8 @@ function printKeys() {
 	   	var myobj = JSON.parse(localStorage[key]);
 	    console.log(typeof(myobj));
 	 
-	    var div	=	'<div class	="box"	id="' + key + '">'+ trash + edit + hamburgermenu +	'<h3>' + myobj.startDate + " "  + myobj.endDate + checkStatus(myobj.category, myobj.desc, myobj.taskstatus)  +  '</h3>' +'</div>';
-	   	
+	    // var div	=	'<div class	="box"	id="' + key + '">'+ trash + edit + hamburgermenu +	'<h3>' + myobj.startDate + " "  + myobj.endDate + checkStatus(myobj.category, myobj.desc, myobj.taskstatus)  +  '</h3>' +'</div>';
+	   	var div = '<div class	="box"	id="' + key + '">' + trash + edit + hamburgermenu + '<h3>' + myobj.startDate + " "  + myobj.endDate + checkStatus(myobj.category, myobj.desc, myobj.taskstatus)+'</h3>' +'</div>'
 
 	   	$('.zadania').append(div);
 	}
@@ -157,7 +141,9 @@ function clearForm() {
 
 function updateTask() {
 
-	var selected = document.getElementById("selectpickersecond").selectedIndex;
+	var task_id = document.getElementById("task_id").value;
+
+	var selected = $( "#selectpickersecond option:selected" ).text();
 
 	// selected = checkValue();
 
@@ -168,7 +154,7 @@ function updateTask() {
 	var endDate = document.getElementById("datepicker4").value;
 		
 	var optradio = document.getElementsByName('optradio2');
-	var task_id = document.getElementById("task_id").value;
+	
 	var optradio;
 		for(var i = 0; i < optradio.length; i++){
 	    	if(optradio[i].checked){
@@ -184,6 +170,7 @@ function updateTask() {
 	task.startDate = startDate;
 	task.endDate = endDate;
 	task.priority = optradio;
+
 	
 
 	console.log(task);
@@ -191,10 +178,12 @@ function updateTask() {
 
 	if(typeof(Storage)!=="undefined")
   				{
-			localStorage.setItem(task.id,JSON.stringify(task));
 
-				task = localStorage.getItem(task.id); 
-				task = JSON.parse(task);
+  			task_temp = localStorage.getItem(task.id); 
+			task_temp = JSON.parse(task_temp);
+
+			task.taskstatus = task_temp.taskstatus;		
+			localStorage.setItem(task.id, JSON.stringify(task));
 			
 				
 
@@ -204,34 +193,14 @@ function updateTask() {
 				 alert("oh no...")
 				  }
 	
-	$(".zadania").empty()
-	
-	printKeys();
+
+ 			$('.zadania').empty();
+			printKeys();
+
+  
 
 }
 
-// function checkStatus() {
-// 	// var array = [];
-// 			for(var i=0; i<localStorage.length; i++) {
-// 	    		var key = localStorage.key(i);
-// 	    		var value = localStorage[key];
-// 	    		console.log(typeof(value));
-	    
-// 	    		console.log(key + " => " + value)
-
-// 	   			var myobj = JSON.parse(localStorage[key]);
-// 	    		console.log(typeof(myobj));
-// 				console.log(myobj.taskstatus)
-// 				if (myobj.taskstatus === "done") {
-// 					$('#'+ key +' p').css("text-decoration", "line-through"); 
-// 	   		}
-		
-			
-		
-// }
-
-
-// }
 
 
 
