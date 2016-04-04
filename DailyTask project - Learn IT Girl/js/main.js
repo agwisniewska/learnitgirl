@@ -49,6 +49,16 @@ $('.buttonmenu').click(function() {
         minDate: 0,
     });
 
+   $('#datepicker3').datepicker({
+      altFormat: "yy-mm-dd",
+        minDate: 0,
+     
+});
+      $('#datepicker4').datepicker({
+      altFormat: "yy-mm-dd",
+        minDate: 0,
+     
+});
 
 $("#createtask").click(function(){
         $("#myModal").modal();

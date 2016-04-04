@@ -1,210 +1,183 @@
 <html >
-	<head>
-		<title>
-		</title>
-		<meta charset="utf-8">
+<head>
+	<title>
+	</title>
+	<meta charset="utf-8">
 	<script src="js/jquery.2.0.0.js"> </script>
-		<script src="js/bootstrap.min.js"> </script>
-		<script src="js/bootstrap.js"></script>
-		<script src="js/moment.min.js"></script>
-		<script src="js/jquery-ui.js"> </script>
+	<script src="js/bootstrap.min.js"> </script>
+	<script src="js/bootstrap.js"></script>
+	<script src="js/moment.min.js"></script>
+	<script src="js/jquery-ui.js"> </script>
 
-		<script src="js/bootstrap-datetimepicker.min.js"></script>
+	<script src="js/bootstrap-datetimepicker.min.js"></script>
 
-		<link href="css/bootstrap.min.css" rel="stylesheet">
-		<link href="css/main.css" rel="stylesheet">
+	<link href="css/bootstrap.min.css" rel="stylesheet">
+	<link href="css/main.css" rel="stylesheet">
 	
- 	
-		<script src="js/main.js"> </script>
-		<script src="js/main2.js"></script>
-		
-
- <link rel="stylesheet" href="css/jquery-ui.min.css" />
- <link rel="stylesheet" href="css/jquery-ui.structure.min.css" />
- <link rel="stylesheet" href="css/jquery-ui.theme.min.css" />
-	</head>
-	<body onload="printKeys()">
-		<div class="container">
-  				<div class="row header" >
-  					<nav class="navbar navbar-default">
-  						<h1> Plan your time <span class="glyphicon glyphicon-search" aria-hidden="true"> </h1>			
-   					</nav>
-   					</span>
+	
+	<script src="js/main.js"> </script>
+	<script src="js/main2.js"></script>
 
 
+	<link rel="stylesheet" href="css/jquery-ui.min.css" />
+	<link rel="stylesheet" href="css/jquery-ui.structure.min.css" />
+	<link rel="stylesheet" href="css/jquery-ui.theme.min.css" />
+</head>
+<body onload="printKeys()">
+	<div class="container">
+		<div class="row header" >
+			<nav class="navbar navbar-default">
+				<h1> Plan your time <span class="glyphicon glyphicon-search" aria-hidden="true"> </span> </h1>			
+			</nav>
+	
 
+	</div class="col-lg-3 col-md-3 col-sm-6 col-xs-12 small">
 
-		 	
+	<div class="row">
+		<div class="col-lg-3 col-md-3 col-sm-6 col-xs-12 small">
+			<ul class="nav nav-pills nav-stacked">
+				<li class="active" id="createtask"><a href="#">CREATE NEW TASK</a></li>
+				<li class="dropdown" id="first">
+					<a class="dropdown-toggle" data-toggle="dropdown">CATEGORY
 
-  			
-   			</div class="col-lg-3 col-md-3 col-sm-6 col-xs-12 small">
-
-				<div class="row">
-					<div class="col-lg-3 col-md-3 col-sm-6 col-xs-12 small">
-						<ul class="nav nav-pills nav-stacked">
- 							<li class="active" id="createtask"><a href="#">CREATE NEW TASK</a></li>
-  							<li class="dropdown" id="first">
-							    <a class="dropdown-toggle" data-toggle="dropdown">CATEGORY
-							    
-							   		<ul class="dropdown-menu" id="firstul">
-								      <li id="work" option value="work"><a href="#">Work</a></li>
-								      <li id="home" option value="home"><a href="#">Home</a></li>
-	    							</ul>
-							  	</li>
-						 	<li class="dropdown" id="second">
-							    <a class="dropdown-toggle" data-toggle="dropdown">SCHEDULE</a>
-						   		<ul class="dropdown-menu" id="secondul">
-							      <li><a href="#">Today</a></li>
-							      <li><a href="#">Next 7 days </a><li>
-							      <li><a href="#">Choose 7 days</a></li>
-    							</ul>
-						  	</li>
-						  	<li class="dropdown" id="third">
-							    <a class="dropdown-toggle" data-toggle="dropdown">SORT BY</a>
-						   		<ul class="dropdown-menu" id="thirdul">
-							      <li><a href="#">Date</a></li>
-							      <li><a href="#">Priority</a><li>
-							      <li><a href="#">Status</a></li>
-    							</ul>
-						  	</li>
+						<ul class="dropdown-menu" id="firstul">
+							<li id="work" option value="work"><a href="#">Work</a></li>
+							<li id="home" option value="home"><a href="#">Home</a></li>
+						</ul>
+					</li>
+					<li class="dropdown" id="second">
+						<a class="dropdown-toggle" data-toggle="dropdown">SCHEDULE</a>
+						<ul class="dropdown-menu" id="secondul">
+							<li><a href="#">Today</a></li>
+							<li><a href="#">Next 7 days </a><li>
+								<li><a href="#">Choose 7 days</a></li>
+							</ul>
+						</li>
+						<li class="dropdown" id="third">
+							<a class="dropdown-toggle" data-toggle="dropdown">SORT BY</a>
+							<ul class="dropdown-menu" id="thirdul">
+								<li><a href="#">Date</a></li>
+								<li><a href="#">Priority</a><li>
+									<li><a href="#">Status</a></li>
+								</ul>
+							</li>
 						</ul>
 					</div>
+
+					<div class="col-lg-9 col-md-9 col-sm-12 col-xs-12">
 						
-						<div class="col-lg-9 col-md-9 col-sm-12 col-xs-12">
-						
-							<div class="row">
-								  <div class="modal fade" id="myModal" role="dialog">
-								    <div class="modal-dialog">
-								      <div class="modal-content">
-								       
-								          <button type="button" class="close" data-dismiss="modal">&times;</button>
-								          <h4><span class="glyphicon glyphicon-lock"></span>Create new task</h4>
-								       		<div class="modal-body">
-								          <form role="form">
-									            <div class="form-group">
-									            	<input type="hidden" id="taskstatus" value="todo">
-									              <label for="description">Add description</label>
-									              	<input type="text" class="form-control" id="taskdesc" placeholder="Type in description here..">
-									            </div>
-								            <div class="form-group">
-								            	  <label for="category">Choose category</label>
-																								<select id="selectpicker">
-																										  <option value="1">Work</option>
-																										  <option value="0">Home</option>
-																									</select>
-											
-	               					</div>
-	               					<div class="form-group radio">
-						             				<label for="radiobuttons">Priority</label>
-												 														<label class="radio-inline">
-						      																			<input type="radio" name="optradio" value="high" >High
-						    						           </label>
-						    					           	<label class="radio-inline">
-						      							            <input type="radio" name="optradio" value="medium">Medium
-						    						           </label>
-						    						           <label class="radio-inline">
-						      							            <input type="radio" name="optradio" value="low">Low
-						    						           </label>
-												        </div>
-												        <div class="form-group">
-												        
-												    
-												        		<input type="text" id="datepicker" placeholder="Start Date">
-												     <span>
-            							</div>
-            							<div class="form-group">
-            					
-            							
-            									<input type="text" id="datepicker2" placeholder="End Date">
-            						
-            						</div>
-            									<button type="button" class="btn btn-primary" id="creator" onclick="createTask()">Create task</button>
-            		
-                 </form>
-														          
-								     </div>
-								   </div>
+						<div class="row">
+							<div class="modal fade" id="myModal" role="dialog">
+								<div class="modal-dialog">
+									<div class="modal-content">
+
+										<button type="button" class="close" data-dismiss="modal">&times;</button>
+										<h4><span class="glyphicon glyphicon-lock"></span>Create new task</h4>
+										<div class="modal-body">
+											<form role="form">
+												<div class="form-group">
+													<input type="hidden" id="taskstatus" value="todo">
+													<label for="description">Add description</label>
+													<input type="text" class="form-control" id="taskdesc" placeholder="Type in description here..">
+												</div>
+												<div class="form-group">
+													<label for="category">Choose category</label>
+													<select id="selectpicker">
+														<option value="1">Work</option>
+														<option value="0">Home</option>
+													</select>
+
+												</div>
+												<div class="form-group radio">
+													<label for="radiobuttons">Priority</label>
+													<label class="radio-inline">
+														<input type="radio" name="optradio" value="high" >High
+													</label>
+													<label class="radio-inline">
+														<input type="radio" name="optradio" value="medium">Medium
+													</label>
+													<label class="radio-inline">
+														<input type="radio" name="optradio" value="low">Low
+													</label>
+												</div>
+												<div class="form-group">
+													<input type="text" id="datepicker" placeholder="Start Date">
+												</div>
+												<div class="form-group">
+													<input type="text" id="datepicker2" placeholder="End Date">
+												</div>
+												<button type="button" class="btn btn-primary" id="creator" onclick="createTask()">Create task</button>
+
+											</form>				          
+										</div>
+									</div>
 								</div>
 							</div>
 						</div>
- 
 
-							<div class="row">
-								 <div class="search">
-    								<input type="text" class="form-control" placeholder="Search">  
- 								 </div>
+
+						<div class="row">
+							<div class="search">
+								<input type="text" class="form-control" placeholder="Search">  
 							</div>
+						</div>
 
-				
-								<div> 
-									<h2> Today </h2> 
+
+						<div> 
+							<h2> Today </h2> 
+						</div>
+						<div class="zadania">
+
+
+						</div>
+
+						<div id="DivToPrintOut">
+						</div>
+
+						<div class="modal fade" id="Modal" role="dialog">
+							<div class="modal-dialog">
+								<div class="modal-content">
+
+									<button type="button" class="close" data-dismiss="modal">&times;</button>
+									<h4><span class="glyphicon glyphicon-lock"></span>Update your task</h4>
+									<div class="modal-body">
+										<form role="form">
+											<input type="hidden" id="task_id">
+											<div class="form-group">
+												<label for="description">Add description</label>
+												<input type="text" class="form-control" id="taskdescription" placeholder="Type in description here..">
+											</div>
+											<div class="form-group">
+												<label for="category">Choose category</label>
+												<select id="selectpickersecond">
+													<option value="work">Work</option>
+													<option value="home">Home</option>
+												</select>
+
+											</div>
+											<div class="form-group radio">
+												<label for="radiobuttons">Priority</label>
+												<label class="radio-inline">
+													<input type="radio" name="optradio2" value="high" >High
+												</label>
+												<label class="radio-inline">
+													<input type="radio" name="optradio2" value="medium">Medium
+												</label>
+												<label class="radio-inline">
+													<input type="radio" name="optradio2" value="low">Low
+												</label>
+											</div>
+											<div class="form-group">
+												<input type="text" id="datepicker3" placeholder="Start Date">
+											</div>
+											<div class="form-group">
+												<input type="text" id="datepicker4" placeholder="End Date">
+											</div>
+											<button type="button" class="btn btn-primary" id="creator2" onclick="updateTask()">Update task</button>
+										</form>
+									</div>
 								</div>
-								<div class="zadania">
-					
-								
-				</div>
-			
-<div id="DivToPrintOut">
-</div>
-				
-	  <div class="modal fade" id="Modal" role="dialog">
-								    <div class="modal-dialog">
-								      <div class="modal-content">
-								       
-								          <button type="button" class="close" data-dismiss="modal">&times;</button>
-								          <h4><span class="glyphicon glyphicon-lock"></span>Update your task</h4>
-								       		<div class="modal-body">
-								          <form role="form">
-								          		<input type="hidden" id="task_id">
-									            <div class="form-group">
-									              <label for="description">Add description</label>
-									              	<input type="text" class="form-control" id="taskdescription" placeholder="Type in description here..">
-									            </div>
-								            <div class="form-group">
-								            	  <label for="category">Choose category</label>
-																								<select id="selectpickersecond">
-																										  <option value="work">Work</option>
-																										  <option value="home">Home</option>
-																									</select>
-											
-	               					</div>
-	               					<div class="form-group radio">
-						             				<label for="radiobuttons">Priority</label>
-												 														<label class="radio-inline">
-						      																			<input type="radio" name="optradio2" value="high" >High
-						    						           </label>
-						    					           	<label class="radio-inline">
-						      							            <input type="radio" name="optradio2" value="medium">Medium
-						    						           </label>
-						    						           <label class="radio-inline">
-						      							            <input type="radio" name="optradio2" value="low">Low
-						    						           </label>
-												        </div>
-												        <div class="form-group">
-												        
-												    
-												        		<input type="text" id="datepicker3" placeholder="Start Date">
-												     <span>
-            							</div>
-            							<div class="form-group">
-            					
-            							
-            									<input type="text" id="datepicker4" placeholder="End Date">
-            						
-            						</div>
-            									<button type="button" class="btn btn-primary" id="creator2" onclick="updateTask()">Update task</button>
-            		
-                 </form>
-														          
-								     </div>
-								   </div>
-								</div>
-							</div>		
-
-				
-				
-			
-	
-
-	</body>
+							</div>
+						</div>		
+					</body>
 </html>
