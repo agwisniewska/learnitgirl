@@ -24,10 +24,7 @@ $('#createtask').click(function () {
 	$('#form').toggle();
 })
 
-$('.glyphicon-search').click(function () {
-	$('.search').show();
 
-});
 
 
 $('.buttonmenu').click(function() {
@@ -40,6 +37,11 @@ $('.buttonmenu').click(function() {
         minDate: 0,
      
 });
+
+$('.glyphicon-search').click(function (){
+    $('.search').toggle();
+});
+
 
 
  
