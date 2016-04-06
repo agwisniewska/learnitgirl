@@ -29,9 +29,6 @@ $('.glyphicon-search').click(function () {
 
 });
 
-$('#dn').click(function () {
-	$(this).next('tasks').style.textDecoration = "line-through";
-});
 
 $('.buttonmenu').click(function() {
 	$(this).next('.dropdown-menu').toggle();
@@ -103,23 +100,39 @@ $('body').on('click', 'div.trash', function() {
           }
 });
 // Here I run functions on mouseover effect which help me to change task status and placed them in localStroage.
-$('body').on('mouseover', 'div#dn', function () {
-   
-   $(this).parent().parent().parent().siblings('h3').find('p').css("text-decoration", "line-through"); 
+$('body').on('click', 'div#dn', function () {
+
+
     var id = $(this).parent().parent().parent().parent().attr('id');
    var value = localStorage[id];
    var object = JSON.parse(value);
    object.taskstatus = "done";
    localStorage.setItem(id, JSON.stringify(object));   
+
+    $('.zadania').empty();
+      printKeys();
+});
+$('body').on('click', 'div#td', function () {
+   
+
+    var id = $(this).parent().parent().parent().parent().attr('id');
+   var value = localStorage[id];
+   var object = JSON.parse(value);
+   object.taskstatus = "todo";
+   localStorage.setItem(id, JSON.stringify(object));   
+   $('.zadania').empty();
+      printKeys();
 });
 
-$('body').on('mouseover', 'div#do', function () {
-   $(this).parent().parent().parent().parent().append('<span class="label label-success">doing</span>');
+$('body').on('click', 'div#do', function () {
+  
     var id = $(this).parent().parent().parent().parent().attr('id');
    var value = localStorage[id];
    var object = JSON.parse(value);
    object.taskstatus = "doing";
    localStorage.setItem(id, JSON.stringify(object));   
+   $('.zadania').empty();
+      printKeys();
 
 });
 // Here I can display all objects from localStorage which category is "work" and hide those which category is "home" The function is run on "work" button click.

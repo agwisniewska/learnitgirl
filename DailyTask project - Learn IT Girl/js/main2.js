@@ -48,19 +48,15 @@ function createTask() {
 
 
 }
-
+// here I create and icon trash which is a part of each div.box generated on page. The same for edit and hamburgermenu icon.
 var trash = '<div class="trash"> \
 <span class="glyphicon glyphicon-trash" aria-hidden="true"> \
 </span>\
 </div>'
-
 var edit = '<div class="edit"> \
 <span class="glyphicon glyphicon-edit" aria-hidden="true">\
 </span>\
 </div>'
-
-
-
 var hamburgermenu= '<div class="dropdown hamburger"> \
 <span class="glyphicon glyphicon-star" aria-hidden="true"> \
 <div class="dropdown-content">\
@@ -72,25 +68,45 @@ var hamburgermenu= '<div class="dropdown hamburger"> \
 </div>'
 
 
+var currentDate = new Date()
+console.log(currentDate);
+var day = currentDate.getDate()
+var month = currentDate.getMonth() + 1
+var year = currentDate.getFullYear()
+var data = moment(data).format( 'MM/DD/YYYY');
+
+var due = "Today you have to finish task!"
+
+console.log(data);
+// Here I add a function which enables me to display all data available on localStorage in desirable way. I 
 function printKeys() {
 	for(var i=0; i<localStorage.length; i++) {
 		var key = localStorage.key(i);
 		var value = localStorage[key];
-		console.log(typeof(value));
+		var myobj = JSON.parse(value);
+	   	var date = myobj.endDate;
+	   	console.log(date);	   	
+	   	console.log(myobj.taskstatus)
+	   	var status = myobj.taskstatus;
+	   	if ( date === data & status === "todo") {
+	   		console.log("ok!");
+	   		var div = '<div class	="box"	id="' + key + '">' + trash + edit + hamburgermenu + '<h3>' + myobj.startDate + " "  + myobj.endDate + checkStatus(myobj.category, myobj.desc, myobj.taskstatus)+ '<p>' + due + "!" + '</p>' + '</h3>'  +'</div>';
+	   		$('.zadania').append(div);
+	   	
 
-		console.log(key + " => " + value)
+	   	} else {
+	   		 var div = '<div class	="box"	id="' + key + '">' + trash + edit + hamburgermenu + '<h3>' + myobj.startDate + " "  + myobj.endDate + checkStatus(myobj.category, myobj.desc, myobj.taskstatus)+'</h3>'  +'</div>';
+	   		$('.zadania').append(div);
+	   	}
+	  	
+	  
 
-		var myobj = JSON.parse(localStorage[key]);
-		console.log(typeof(myobj));
-
-	    // var div	=	'<div class	="box"	id="' + key + '">'+ trash + edit + hamburgermenu +	'<h3>' + myobj.startDate + " "  + myobj.endDate + checkStatus(myobj.category, myobj.desc, myobj.taskstatus)  +  '</h3>' +'</div>';
-	    var div = '<div class	="box"	id="' + key + '">' + trash + edit + hamburgermenu + '<h3>' + myobj.startDate + " "  + myobj.endDate + checkStatus(myobj.category, myobj.desc, myobj.taskstatus)+'</h3>' +'</div>'
-
-	    $('.zadania').append(div);
+	    
+	    // I add a newly created div to div.zadania
+	    
 	}
-
 }
-
+// Here I check task's status. Function have three arguments, and depending on the status I create different content
 
 
 function checkStatus(category, description, status) {
@@ -106,40 +122,30 @@ function checkStatus(category, description, status) {
 	
 
 }
+// Here I add a function to clear form as I close the modal form
 function clearForm() {
-
 	$('#taskdesc').val('');
 	$('#selectpicker').val('');
 	$('#datepicker').val('');
 	$('#datepicker2').val('');
-
 }
-
+// Here I have function update task which help me to collect data from update-modal form and then update them in localStorage
 function updateTask() {
 
 	var task_id = document.getElementById("task_id").value;
-
 	var selected = $( "#selectpickersecond option:selected" ).text();
-
-	// selected = checkValue();
-
 	var description = document.getElementById('taskdescription').value;
-
 	var startDate = document.getElementById("datepicker3").value;
-
 	var endDate = document.getElementById("datepicker4").value;
-
 	var optradio = document.getElementsByName('optradio2');
-	
 	var optradio;
 	for(var i = 0; i < optradio.length; i++){
 		if(optradio[i].checked){
 			optradio = optradio[i].value;
 		}
 	}
-
+//  as in function "cretae task()" I create a task object which will be added to localStorage
 	var task = {}
-
 	task.id = task_id;
 	task.category = selected;
 	task.desc = description;
@@ -147,34 +153,22 @@ function updateTask() {
 	task.endDate = endDate;
 	task.priority = optradio;
 
-	
-
-	console.log(task);
-
-
 	if(typeof(Storage)!=="undefined")
-	{
-
+		{
+		// Here I get my object task from localStorage and parse string to objecy
 		task_temp = localStorage.getItem(task.id); 
 		task_temp = JSON.parse(task_temp);
-
+		// Here I set that my actual taskstatus (taskstatus of object downloaded from localStorage) will become automatically taskstatus of newly created object.
 		task.taskstatus = task_temp.taskstatus;		
+		// Next I set my newly created task in localStorage. Becuause of the fact that task.id is not changed,  the old object is in result replaced by a new one.
 		localStorage.setItem(task.id, JSON.stringify(task));
-
-
-
 	}
 	else
 	{
 		alert("oh no...")
 	}
-	
-
 	$('.zadania').empty();
 	printKeys();
-
-
-
 }
 
 
