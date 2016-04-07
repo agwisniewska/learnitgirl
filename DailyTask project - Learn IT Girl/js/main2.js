@@ -135,6 +135,24 @@ function checkStatus(category, description, status) {
 	
 
 }
+
+function checkDate(enddate, status, currentdate, key) {
+ if ( enddate === currentdate & status === "todo") {
+                          var div = '<div class ="box"  id="' + key + '">' + trash + edit + hamburgermenu + '<h3>' + myobj.startDate + " "  + myobj.endDate + checkStatus(myobj.category, myobj.desc, myobj.taskstatus)+ '</h3>'  +'</div>';
+                          $('.zadania').append(div);
+                          $('#'+key).css("background-color","#FFFF99");
+
+                        }
+                        else if  (enddate < currentdate & status == "todo") {
+                            var div = '<div class ="box"  id="' + key + '">' + trash + edit + hamburgermenu + '<h3>' + myobj.startDate + " "  + myobj.endDate + checkStatus(myobj.category, myobj.desc, myobj.taskstatus)+ '</h3>'  +'</div>';
+                            $('.zadania').append(div);
+                            $('#'+key).css("background-color","#FF6666");
+                        }
+                      else {
+                          var div = '<div class  ="box"  id="' + key + '">' + trash + edit + hamburgermenu + '<h3>' + myobj.startDate + " "  + myobj.endDate + checkStatus(myobj.category, myobj.desc, myobj.taskstatus)+'</h3>'  +'</div>';
+                          $('.zadania').append(div);
+                       }
+                   }
 // Here I add a function to clear form as I close the modal form
 function clearForm() {
 	$('#taskdesc').val('');
