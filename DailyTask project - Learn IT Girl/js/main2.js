@@ -69,32 +69,45 @@ var hamburgermenu= '<div class="dropdown hamburger"> \
 
 
 var currentDate = new Date()
+var dateplusseven = new Date(new Date().getTime()+(7*24*60*60*1000));
+
 console.log(currentDate);
 var day = currentDate.getDate()
 var month = currentDate.getMonth() + 1
 var year = currentDate.getFullYear()
-var data = moment(data).format( 'MM/DD/YYYY');
+
+var currentdate = moment(currentdate).format( 'MM/DD/YYYY');
+var dateplusseven1 = moment(dateplusseven).format('MM/DD/YYYY');
 
 var due = "Today you have to finish task!"
+var overdue = "Overdue task"
 
-console.log(data);
 // Here I add a function which enables me to display all data available on localStorage in desirable way. I 
 function printKeys() {
 	for(var i=0; i<localStorage.length; i++) {
 		var key = localStorage.key(i);
 		var value = localStorage[key];
 		var myobj = JSON.parse(value);
-	   	var date = myobj.endDate;
-	   	console.log(date);	   	
-	   	console.log(myobj.taskstatus)
-	   	var status = myobj.taskstatus;
-	   	if ( date === data & status === "todo") {
-	   		console.log("ok!");
-	   		var div = '<div class	="box"	id="' + key + '">' + trash + edit + hamburgermenu + '<h3>' + myobj.startDate + " "  + myobj.endDate + checkStatus(myobj.category, myobj.desc, myobj.taskstatus)+ '<p>' + due + "!" + '</p>' + '</h3>'  +'</div>';
-	   		$('.zadania').append(div);
+	   	var enddate = myobj.endDate;
 	   	
+	   	var status = myobj.taskstatus;
+	   	// Here I compare task.end  date with actual date and status and according to this I generate div background color and a message
+	   	if ( enddate === currentdate & status === "todo") {
+	   		var div = '<div class	="box"	id="' + key + '">' + trash + edit + hamburgermenu + '<h3>' + myobj.startDate + " "  + myobj.endDate + checkStatus(myobj.category, myobj.desc, myobj.taskstatus)+ '</h3>'  +'</div>';
+	   		$('.zadania').append(div);
+	   		$('#'+key).css("background-color","#FFFF99");
 
-	   	} else {
+
+
+	   	}
+	   	else if  (enddate < currentdate & status == "todo") {
+	   		var div = '<div class	="box"	id="' + key + '">' + trash + edit + hamburgermenu + '<h3>' + myobj.startDate + " "  + myobj.endDate + checkStatus(myobj.category, myobj.desc, myobj.taskstatus)+ '</h3>'  +'</div>';
+	   	
+	   		$('.zadania').append(div);
+	   		$('#'+key).css("background-color","#FF6666");
+
+	   	}
+	   	else {
 	   		 var div = '<div class	="box"	id="' + key + '">' + trash + edit + hamburgermenu + '<h3>' + myobj.startDate + " "  + myobj.endDate + checkStatus(myobj.category, myobj.desc, myobj.taskstatus)+'</h3>'  +'</div>';
 	   		$('.zadania').append(div);
 	   	}

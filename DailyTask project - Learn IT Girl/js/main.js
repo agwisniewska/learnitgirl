@@ -24,7 +24,10 @@ $('#createtask').click(function () {
 	$('#form').toggle();
 })
 
+$('.glyphicon-search').click(function () {
+	$('.search').show();
 
+});
 
 
 $('.buttonmenu').click(function() {
@@ -170,6 +173,45 @@ $('#home').click(function () {
        }
 });
 
+
+
+$('#today').click(function () {
+  $('.zadania').empty();
+  for(var i=0; i<localStorage.length; i++) {
+         var key = localStorage.key(i);
+         var value = localStorage[key];
+         var myobj = JSON.parse(value);
+         console.log(typeof(myobj));
+         var startdate = myobj.startDate;
+          if ( startdate === currentdate) {
+            var div  = '<div class ="box"  id="' + key + '">'+ trash + edit + hamburgermenu +  '<h3>' + myobj.startDate + " "  + myobj.endDate + checkStatus(myobj.category, myobj.desc, myobj.taskstatus)  +  '</h3>' +'</div>';
+            $('.zadania').append(div)
+
+         }
+
+       }
+
+     });
+
+$('#next').click(function () {
+  $('.zadania').empty();
+     for(var i=0; i<localStorage.length; i++) {
+         var key = localStorage.key(i);
+         var value = localStorage[key];
+         var myobj = JSON.parse(value);
+         var startdate = myobj.startDate;
+         console.log(startdate);
+                   if (startdate > currentdate & startdate<=dateplusseven1) {
+                        var div  = '<div class ="box"  id="' + key + '">'+ trash + edit + hamburgermenu +  '<h3>' + myobj.startDate + " "  + myobj.endDate + checkStatus(myobj.category, myobj.desc, myobj.taskstatus)  +  '</h3>' +'</div>';
+                        $('.zadania').append(div)
+
+                
+         }
+           
+            }
+   
+
+
+     });
+
 });
-
-
