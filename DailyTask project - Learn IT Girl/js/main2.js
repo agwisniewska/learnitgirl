@@ -102,7 +102,7 @@ function compareDates(enddate, currentdate, status, key, startdate, category, de
 	   		$('.zadania').append(div);
 	   		$('#'+key).css("background-color","#FFFF99");
 	   		$('#'+key).prop('title', 'Finish your task today to follow your plan!');
-	   		$('#'+key).first().tooltip({ track: true });
+	   		$('#'+key).closest().tooltip({ track: true });
 
 
 	   	}
@@ -111,7 +111,7 @@ function compareDates(enddate, currentdate, status, key, startdate, category, de
 	   		$('.zadania').append(div);
 	   		$('#'+key).css("background-color","#FF6666");
 	   		$('#'+key ).prop('title', 'Overdue task');
-	   		$('#'+key).first().tooltip({ track: true });
+	   		$('#'+key).closest().tooltip({ track: true });
 
 	   	}
 	   	else {
