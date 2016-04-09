@@ -102,7 +102,9 @@ function compareDates(enddate, currentdate, status, key, startdate, category, de
 	   		$('.zadania').append(div);
 	   		$('#'+key).css("background-color","#FFFF99");
 	   		$('#'+key).prop('title', 'Finish your task today to follow your plan!');
-	   		$('#'+key).closest().tooltip({ track: true });
+	   		$('#'+key).closest().tooltip(
+	   			{ track: true }
+	   			);
 
 
 	   	}
@@ -111,7 +113,9 @@ function compareDates(enddate, currentdate, status, key, startdate, category, de
 	   		$('.zadania').append(div);
 	   		$('#'+key).css("background-color","#FF6666");
 	   		$('#'+key ).prop('title', 'Overdue task');
-	   		$('#'+key).closest().tooltip({ track: true });
+	   		$('#'+key).closest().tooltip(
+	   			{ track: true }
+	   			);
 
 	   	}
 	   	else {
@@ -185,7 +189,29 @@ function updateTask() {
 	printKeys();
 }
 
-
-
-
-
+function sortByDate() {
+var dates = [];
+    for(var i=0; i<localStorage.length; i++) {
+        var key = localStorage.key(i);
+        var value = localStorage[key];
+        var myobj = JSON.parse(value);
+        dates.push(myobj);
+       
+ 
+        dates.sort(function(a, b){
+  return a.startDate > b.startDate;
+});
+    }
+   $('.zadania').empty();
+    for (var i=0; i<dates.length; i++) {
+        var object = dates[i];
+        var key = object.id;
+        compareDates(object.endDate, currentdate, object.taskstatus, key, object.startDate, object.category, object.desc);
+       
+        }
+           
+       
+ 
+   
+ 
+}
