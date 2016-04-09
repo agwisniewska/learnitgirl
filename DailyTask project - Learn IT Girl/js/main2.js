@@ -88,38 +88,38 @@ function printKeys() {
 		var key = localStorage.key(i);
 		var value = localStorage[key];
 		var myobj = JSON.parse(value);
-	   	var enddate = myobj.endDate;
-	   	
-	   	var status = myobj.taskstatus;
+	   
 	   	// Here I compare task.end  date with actual date and status and according to this I generate div background color and a message
-	   	if ( enddate === currentdate & status === "todo") {
-	   		var div = '<div class	="box"	id="' + key + '">' + trash + edit + hamburgermenu + '<h3>' + myobj.startDate + " "  + myobj.endDate + checkStatus(myobj.category, myobj.desc, myobj.taskstatus)+ '</h3>'  +'</div>';
-	   		$('.zadania').append(div);
-	   		$('#'+key).css("background-color","#FFFF99");
 
-
-
-	   	}
-	   	else if  (enddate < currentdate & status == "todo") {
-	   		var div = '<div class	="box"	id="' + key + '">' + trash + edit + hamburgermenu + '<h3>' + myobj.startDate + " "  + myobj.endDate + checkStatus(myobj.category, myobj.desc, myobj.taskstatus)+ '</h3>'  +'</div>';
-	   	
-	   		$('.zadania').append(div);
-	   		$('#'+key).css("background-color","#FF6666");
-
-	   	}
-	   	else {
-	   		 var div = '<div class	="box"	id="' + key + '">' + trash + edit + hamburgermenu + '<h3>' + myobj.startDate + " "  + myobj.endDate + checkStatus(myobj.category, myobj.desc, myobj.taskstatus)+'</h3>'  +'</div>';
-	   		$('.zadania').append(div);
-	   	}
-	  	
-	  
-
-	    
-	    // I add a newly created div to div.zadania
+	   	compareDates(myobj.endDate, currentdate, myobj.taskstatus, key, myobj.startDate, myobj.category, myobj.desc);
 	    
 	}
 }
 // Here I check task's status. Function have three arguments, and depending on the status I create different content
+function compareDates(enddate, currentdate, status, key, startdate, category, desc) {
+	 	if ( enddate === currentdate & status === "todo") {
+	   		var div = '<div class	="box"	id="' + key + '">' + trash + edit + hamburgermenu + '<h3>' + startdate + " "  + enddate + checkStatus(category, desc, status)+ '</h3>'  +'</div>';
+	   		$('.zadania').append(div);
+	   		$('#'+key).css("background-color","#FFFF99");
+	   		$('#'+key).prop('title', 'Finish your task today to follow your plan!');
+	   		$('#'+key).first().tooltip({ track: true });
+
+
+	   	}
+	   	else if  (enddate < currentdate & status == "todo") {
+			var div = '<div class	="box"	id="' + key + '">' + trash + edit + hamburgermenu + '<h3>' + startdate + " "  + enddate + checkStatus(category, desc, status)+ '</h3>'  +'</div>';	   	
+	   		$('.zadania').append(div);
+	   		$('#'+key).css("background-color","#FF6666");
+	   		$('#'+key ).prop('title', 'Overdue task');
+	   		$('#'+key).first().tooltip({ track: true });
+
+	   	}
+	   	else {
+			var div = '<div class	="box"	id="' + key + '">' + trash + edit + hamburgermenu + '<h3>' + startdate + " "  + enddate + checkStatus(category, desc, status)+ '</h3>'  +'</div>';
+	   		$('.zadania').append(div);
+	   	}
+	  	
+}
 
 
 function checkStatus(category, description, status) {
@@ -136,23 +136,6 @@ function checkStatus(category, description, status) {
 
 }
 
-function checkDate(enddate, status, currentdate, key) {
- if ( enddate === currentdate & status === "todo") {
-                          var div = '<div class ="box"  id="' + key + '">' + trash + edit + hamburgermenu + '<h3>' + myobj.startDate + " "  + myobj.endDate + checkStatus(myobj.category, myobj.desc, myobj.taskstatus)+ '</h3>'  +'</div>';
-                          $('.zadania').append(div);
-                          $('#'+key).css("background-color","#FFFF99");
-
-                        }
-                        else if  (enddate < currentdate & status == "todo") {
-                            var div = '<div class ="box"  id="' + key + '">' + trash + edit + hamburgermenu + '<h3>' + myobj.startDate + " "  + myobj.endDate + checkStatus(myobj.category, myobj.desc, myobj.taskstatus)+ '</h3>'  +'</div>';
-                            $('.zadania').append(div);
-                            $('#'+key).css("background-color","#FF6666");
-                        }
-                      else {
-                          var div = '<div class  ="box"  id="' + key + '">' + trash + edit + hamburgermenu + '<h3>' + myobj.startDate + " "  + myobj.endDate + checkStatus(myobj.category, myobj.desc, myobj.taskstatus)+'</h3>'  +'</div>';
-                          $('.zadania').append(div);
-                       }
-                   }
 // Here I add a function to clear form as I close the modal form
 function clearForm() {
 	$('#taskdesc').val('');

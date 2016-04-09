@@ -24,11 +24,6 @@ $('#createtask').click(function () {
 	$('#form').toggle();
 })
 
-$('.glyphicon-search').click(function () {
-	$('.search').show();
-
-});
-
 
 $('.buttonmenu').click(function() {
 	$(this).next('.dropdown-menu').toggle();
@@ -164,8 +159,7 @@ $('#home').click(function () {
          var value = localStorage[key];
          var myobj = JSON.parse(value);
          console.log(typeof(myobj));
-         var category = myobj.category;
-            if (category === "Home") {
+            if (myobj.category === "Home") {
                  var div  = '<div class ="box"  id="' + key + '">'+ trash + edit + hamburgermenu +  '<h3>' + myobj.startDate + " "  + myobj.endDate + checkStatus(myobj.category, myobj.desc, myobj.taskstatus)  +  '</h3>' +'</div>';
                   $('.zadania').append(div)
             }
@@ -182,25 +176,9 @@ $('#today').click(function () {
          var value = localStorage[key];
          var myobj = JSON.parse(value);
          console.log(typeof(myobj));
-         var startdate = myobj.startDate;
-         var enddate = myobj.endDate;
-         var status = myobj.taskstatus;
-          if ( startdate === currentdate) {
-                if ( enddate === currentdate & status === "todo") {
-                    var div = '<div class ="box"  id="' + key + '">' + trash + edit + hamburgermenu + '<h3>' + myobj.startDate + " "  + myobj.endDate + checkStatus(myobj.category, myobj.desc, myobj.taskstatus)+ '</h3>'  +'</div>';
-                    $('.zadania').append(div);
-                    $('#'+key).css("background-color","#FFFF99");
-
-                  }
-                else if  (enddate < currentdate & status == "todo") {
-                    var div = '<div class ="box"  id="' + key + '">' + trash + edit + hamburgermenu + '<h3>' + myobj.startDate + " "  + myobj.endDate + checkStatus(myobj.category, myobj.desc, myobj.taskstatus)+ '</h3>'  +'</div>';
-                    $('.zadania').append(div);
-                    $('#'+key).css("background-color","#FF6666");
-                }
-              else {
-                  var div = '<div class  ="box"  id="' + key + '">' + trash + edit + hamburgermenu + '<h3>' + myobj.startDate + " "  + myobj.endDate + checkStatus(myobj.category, myobj.desc, myobj.taskstatus)+'</h3>'  +'</div>';
-                  $('.zadania').append(div);
-               }
+          if ( myobj.startDate === currentdate) {
+                compareDates(myobj.endDate, currentdate, myobj.taskstatus, key, myobj.startDate, myobj.category, myobj.desc);
+             
             }
 
        }
@@ -213,29 +191,9 @@ $('#next').click(function () {
          var key = localStorage.key(i);
          var value = localStorage[key];
          var myobj = JSON.parse(value);
-         var startdate = myobj.startDate;  
-         var enddate = myobj.endDate;
-        var status = myobj.taskstatus;
-         console.log(startdate);
-                   if (startdate > currentdate & startdate<=dateplusseven1) {
-                            
-                       if ( enddate === currentdate & status === "todo") {
-                          var div = '<div class ="box"  id="' + key + '">' + trash + edit + hamburgermenu + '<h3>' + myobj.startDate + " "  + myobj.endDate + checkStatus(myobj.category, myobj.desc, myobj.taskstatus)+ '</h3>'  +'</div>';
-                          $('.zadania').append(div);
-                          $('#'+key).css("background-color","#FFFF99");
-                         }
-                         else if  (enddate < currentdate & status == "todo") {
-                            var div = '<div class ="box"  id="' + key + '">' + trash + edit + hamburgermenu + '<h3>' + myobj.startDate + " "  + myobj.endDate + checkStatus(myobj.category, myobj.desc, myobj.taskstatus)+ '</h3>'  +'</div>';
-                            $('.zadania').append(div);
-                            $('#'+key).css("background-color","#FF6666");
-                         }
-                          else {
-                            var div = '<div class  ="box"  id="' + key + '">' + trash + edit + hamburgermenu + '<h3>' + myobj.startDate + " "  + myobj.endDate + checkStatus(myobj.category, myobj.desc, myobj.taskstatus)+'</h3>'  +'</div>';
-                            $('.zadania').append(div);
-                         }
-                                    
-
-                
+                   if (myobj.startDate > currentdate & myobj.startDate<=dateplusseven1) {
+                            compareDates(myobj.endDate, currentdate, myobj.taskstatus, key, myobj.startDate, myobj.category, myobj.desc); 
+                    
                     }
            
             }
