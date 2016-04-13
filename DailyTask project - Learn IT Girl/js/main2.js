@@ -91,14 +91,14 @@ function printKeys() {
 	   
 	   	// Here I compare task.end  date with actual date and status and according to this I generate div background color and a message
 
-	   	compareDates(myobj.endDate, currentdate, myobj.taskstatus, key, myobj.startDate, myobj.category, myobj.desc);
+	   	compareDates(myobj.endDate, currentdate, myobj.taskstatus, key, myobj.startDate, myobj.category, myobj.desc, myobj.priority);
 	    
 	}
 }
 // Here I check task's status. Function have three arguments, and depending on the status I create different content
-function compareDates(enddate, currentdate, status, key, startdate, category, desc) {
+function compareDates(enddate, currentdate, status, key, startdate, category, desc, priority) {
 	 	if ( enddate === currentdate & status === "todo") {
-	   		var div = '<div class	="box"	id="' + key + '">' + trash + edit + hamburgermenu + '<h3>' + startdate + " "  + enddate + checkStatus(category, desc, status)+ '</h3>'  +'</div>';
+	   		var div = '<div class	="box"	id="' + key + '">' + trash + edit + hamburgermenu + '<h3>' + startdate + " "  + enddate + checkStatus(category, desc, status, priority )+ '</h3>'  +'</div>';
 	   		$('.zadania').append(div);
 	   		$('#'+key).css("background-color","#FFFF99");
 	   		$('#'+key).prop('title', 'Finish your task today to follow your plan!');
@@ -109,7 +109,7 @@ function compareDates(enddate, currentdate, status, key, startdate, category, de
 
 	   	}
 	   	else if  (enddate < currentdate & status == "todo") {
-			var div = '<div class	="box"	id="' + key + '">' + trash + edit + hamburgermenu + '<h3>' + startdate + " "  + enddate + checkStatus(category, desc, status)+ '</h3>'  +'</div>';	   	
+			var div = '<div class	="box"	id="' + key + '">' + trash + edit + hamburgermenu + '<h3>' + startdate + " "  + enddate + checkStatus(category, desc, status, priority) + '</h3>'  +'</div>';	   	
 	   		$('.zadania').append(div);
 	   		$('#'+key).css("background-color","#FF6666");
 	   		$('#'+key ).prop('title', 'Overdue task');
@@ -119,22 +119,22 @@ function compareDates(enddate, currentdate, status, key, startdate, category, de
 
 	   	}
 	   	else {
-			var div = '<div class	="box"	id="' + key + '">' + trash + edit + hamburgermenu + '<h3>' + startdate + " "  + enddate + checkStatus(category, desc, status)+ '</h3>'  +'</div>';
+			var div = '<div class	="box"	id="' + key + '">' + trash + edit + hamburgermenu + '<h3>' + startdate + " "  + enddate + checkStatus(category, desc, status, priority) + '</h3>'  +'</div>';
 	   		$('.zadania').append(div);
 	   	}
 	  	
 }
 
 
-function checkStatus(category, description, status) {
+function checkStatus(category, description, status, priority) {
 	if (status === "done") {
-		return  '<p class="done">' + category + " " +  description + '</p>'
+		return  '<p class="done">' + category + " " +  description + priority + '</p>'
 	}
 	else if (status=== "todo" ) {
-		return '<p>' + '<span class="label label-danger">To do</span>' + category + " " +  description + '</p>'
+		return '<p>' + '<span class="label label-danger">To do</span>' + category + " " +  description + " " + priority+'</p>'
 	}
 	else if (status === "doing") {
-		return '<p>' + '<span class="label label-success">Doing</span>' + category + " " +  description + '</p>'
+		return '<p>' + '<span class="label label-success">Doing</span>' + category + " " +  description + " " +  priority +'</p>'
 	}
 	
 
@@ -199,19 +199,49 @@ var dates = [];
        
  
         dates.sort(function(a, b){
-  return a.startDate > b.startDate;
+  				return a.startDate > b.startDate;
 });
     }
    $('.zadania').empty();
     for (var i=0; i<dates.length; i++) {
         var object = dates[i];
         var key = object.id;
-        compareDates(object.endDate, currentdate, object.taskstatus, key, object.startDate, object.category, object.desc);
-       
+        compareDates(object.endDate, currentdate, object.taskstatus, key, object.startDate, object.category, object.desc, object.priority);
+       console.log(myobj.priority)
         }
            
+}
+
+function sortByPriority () {
+	var priorities = [];
+    for(var i=0; i<localStorage.length; i++) {
+        var key = localStorage.key(i);
+        var value = localStorage[key];
+        var myobj = JSON.parse(value);
+        var priority = myobj.priority
+        priorities.push(myobj);
        
+
+       priorities.sort(function(a, b){
+
+  //compare two values
+  if(a.priority.toLowerCase() < b.priority.toLowerCase()) return -1;
+
+  if(a.priority.toLowerCase() > b.priority.toLowerCase()) return 1;
+  return 0;
+
+})
  
-   
- 
+//         priorities.sort(function(a, b) {
+//    			return a.priority > b.priority;
+// });
+    console.log(priorities)
+    $('.zadania').empty();
+    for (var i=0; i<priorities.length; i++) {
+        var object = priorities[i];
+        var key = object.id;
+        console.log(key);
+        compareDates(object.endDate, currentdate, object.taskstatus, key, object.startDate, object.category, object.desc, object.priority);
+}
+}
 }
