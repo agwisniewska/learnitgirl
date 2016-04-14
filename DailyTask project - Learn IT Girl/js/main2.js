@@ -12,8 +12,29 @@ function createTask() {
 	for(var i = 0; i < optradio.length; i++){
 		if(optradio[i].checked){
 			optradio = optradio[i].value;
+			console.log(optradio)
+			if (optradio === "1") {
+					return "high";
+				}
+				else if (optradio === "2") {
+					return "medium";
+				}
+				else if (optradio === "3") {
+					return "low";
+				}
+
 		}
+
+				console.log(optradio);
+	
 	}
+
+
+	
+
+
+
+
 	// then I create and object TASK
 	var task = {}
 	// next I create my object key. It is div ID  which is randomously generated
@@ -48,6 +69,10 @@ function createTask() {
 
 
 }
+
+
+	
+
 // here I create and icon trash which is a part of each div.box generated on page. The same for edit and hamburgermenu icon.
 var trash = '<div class="trash"> \
 <span class="glyphicon glyphicon-trash" aria-hidden="true"> \
@@ -90,15 +115,16 @@ function printKeys() {
 		var myobj = JSON.parse(value);
 	   
 	   	// Here I compare task.end  date with actual date and status and according to this I generate div background color and a message
-
+	  	// console.log(myobj.priority);
 	   	compareDates(myobj.endDate, currentdate, myobj.taskstatus, key, myobj.startDate, myobj.category, myobj.desc, myobj.priority);
+	  
 	    
 	}
 }
 // Here I check task's status. Function have three arguments, and depending on the status I create different content
 function compareDates(enddate, currentdate, status, key, startdate, category, desc, priority) {
 	 	if ( enddate === currentdate & status === "todo") {
-	   		var div = '<div class	="box"	id="' + key + '">' + trash + edit + hamburgermenu + '<h3>' + startdate + " "  + enddate + checkStatus(category, desc, status, priority )+ '</h3>'  +'</div>';
+	   		var div = '<div class	="box"	id="' + key + '">' + trash + edit + hamburgermenu + '<h3>' + startdate + " "  + enddate + checkStatus(category, desc, status, priority) + '</h3>'  +'</div>';
 	   		$('.zadania').append(div);
 	   		$('#'+key).css("background-color","#FFFF99");
 	   		$('#'+key).prop('title', 'Finish your task today to follow your plan!');
@@ -125,16 +151,32 @@ function compareDates(enddate, currentdate, status, key, startdate, category, de
 	  	
 }
 
+function displaypriority(priority) {
+			if (priority === 1) {
+				priority = "high";
+				
+			}
+			else if (priority === 2) {
+				priority = "medium";
+			
+			}
+			else {
+				priority = "low";
+			
+			}
+			return priority
+}
+
 
 function checkStatus(category, description, status, priority) {
 	if (status === "done") {
 		return  '<p class="done">' + category + " " +  description + priority + '</p>'
 	}
 	else if (status=== "todo" ) {
-		return '<p>' + '<span class="label label-danger">To do</span>' + category + " " +  description + " " + priority+'</p>'
+		return '<p>' + '<span class="label label-danger">To do</span>' + category + " " +  description + " " + priority +'</p>'
 	}
 	else if (status === "doing") {
-		return '<p>' + '<span class="label label-success">Doing</span>' + category + " " +  description + " " +  priority +'</p>'
+		return '<p>' + '<span class="label label-success">Doing</span>' + category + " " +  description + " " + priority  +'</p>'
 	}
 	
 
@@ -160,6 +202,7 @@ function updateTask() {
 	for(var i = 0; i < optradio.length; i++){
 		if(optradio[i].checked){
 			optradio = optradio[i].value;
+
 		}
 	}
 //  as in function "cretae task()" I create a task object which will be added to localStorage
@@ -213,28 +256,17 @@ var dates = [];
 }
 
 function sortByPriority () {
-	var priorities = [];
-    for(var i=0; i<localStorage.length; i++) {
+    var priorities = [];
+    for(var i=0; i < localStorage.length; i++) {
         var key = localStorage.key(i);
         var value = localStorage[key];
         var myobj = JSON.parse(value);
         var priority = myobj.priority
         priorities.push(myobj);
-       
-
-       priorities.sort(function(a, b){
-
-  //compare two values
-  if(a.priority.toLowerCase() < b.priority.toLowerCase()) return -1;
-
-  if(a.priority.toLowerCase() > b.priority.toLowerCase()) return 1;
-  return 0;
-
-})
+         
  
-//         priorities.sort(function(a, b) {
-//    			return a.priority > b.priority;
-// });
+       priorities.sort();
+   }
     console.log(priorities)
     $('.zadania').empty();
     for (var i=0; i<priorities.length; i++) {
@@ -242,6 +274,6 @@ function sortByPriority () {
         var key = object.id;
         console.log(key);
         compareDates(object.endDate, currentdate, object.taskstatus, key, object.startDate, object.category, object.desc, object.priority);
-}
-}
+    }
+ 
 }
