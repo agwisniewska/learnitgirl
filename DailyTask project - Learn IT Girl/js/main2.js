@@ -157,9 +157,25 @@ function displaypriority(priority) {
 			return priority
 }
 
+function displaystatus(taskstatus) {
+		if (taskstatus === "1") {
+				taskstatus = "todo";
+				
+			}
+			else if (taskstatus === "2") {
+				taskstatus = "doing";
+			
+			}
+			else if (taskstatus === "3"){
+				taskstatus  = "done";
+			
+			}
+			return taskstatus
+}
 
 function checkStatus(category, description, status, priority) {
 	priority = displaypriority(priority)
+	status = displaystatus(status)
 	if (status === "done") {
 		return  '<p class="done">' + category + " " +  description + priority + '</p>'
 	}
@@ -275,5 +291,38 @@ function sortByPriority () {
         compareDates(object.endDate, currentdate, object.taskstatus, key, object.startDate, object.category, object.desc, object.priority);
     }
  
+
+}
+
+function sortByStatus() {
+	 var taskstatuses = [];
+    for(var i=0; i < localStorage.length; i++) {
+        var key = localStorage.key(i);
+        var value = localStorage[key];
+        var myobj = JSON.parse(value);
+        var taskstatus = myobj.taskstatus
+        taskstatuses.push(myobj);
+         
+ 
+     taskstatuses.sort(function(a, b){
+ 
+   //compare two values
+   if(a.taskstatus.toLowerCase() < b.taskstatus.toLowerCase()) return -1;
+ 
+  if(a.taskstatus.toLowerCase() > b.taskstatus.toLowerCase()) return 1;
+ return 0;
+ });
+ 
+   }
+    
+    $('.zadania').empty();
+    for (var i=0; i<taskstatuses.length; i++) {
+        var object = taskstatuses[i];
+        var key = object.id;
+        console.log(key);
+        compareDates(object.endDate, currentdate, object.taskstatus, key, object.startDate, object.category, object.desc, object.priority);
+    }
+ 
+
 
 }

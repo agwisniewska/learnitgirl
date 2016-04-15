@@ -58,7 +58,7 @@
 							<ul class="dropdown-menu" id="thirdul">
 								<li><a href="#" onclick="sortByDate()">Date</a></li>
 								<li><a href="#" onclick="sortByPriority()">Priority</a><li>
-									<li><a href="#">Status</a></li>
+									<li><a href="#" onclick="sortByStatus()">Status</a></li>
 								</ul>
 							</li>
 						</ul>
@@ -76,7 +76,7 @@
 										<div class="modal-body">
 											<form role="form">
 												<div class="form-group">
-													<input type="hidden" id="taskstatus" value="todo">
+													<input type="hidden" id="taskstatus" value="1">
 													<label for="description">Add description</label>
 													<input type="text" class="form-control" id="taskdesc" placeholder="Type in description here..">
 												</div>

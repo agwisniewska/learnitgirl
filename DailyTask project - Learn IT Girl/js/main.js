@@ -119,7 +119,7 @@ $('body').on('click', 'div#dn', function () {
     var id = $(this).parent().parent().parent().parent().attr('id');
    var value = localStorage[id];
    var object = JSON.parse(value);
-   object.taskstatus = "done";
+   object.taskstatus = "3";
    localStorage.setItem(id, JSON.stringify(object));   
 
     $('.zadania').empty();
@@ -131,7 +131,7 @@ $('body').on('click', 'div#td', function () {
     var id = $(this).parent().parent().parent().parent().attr('id');
    var value = localStorage[id];
    var object = JSON.parse(value);
-   object.taskstatus = "todo";
+   object.taskstatus = "1";
    localStorage.setItem(id, JSON.stringify(object));   
    $('.zadania').empty();
       printKeys();
@@ -142,7 +142,8 @@ $('body').on('click', 'div#do', function () {
     var id = $(this).parent().parent().parent().parent().attr('id');
    var value = localStorage[id];
    var object = JSON.parse(value);
-   object.taskstatus = "doing";
+   object.taskstatus = "2";
+   console.log(object.taskstatus)
    localStorage.setItem(id, JSON.stringify(object));   
    $('.zadania').empty();
       printKeys();
