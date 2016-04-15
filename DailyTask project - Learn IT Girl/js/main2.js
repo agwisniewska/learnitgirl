@@ -13,21 +13,11 @@ function createTask() {
 		if(optradio[i].checked){
 			optradio = optradio[i].value;
 			console.log(optradio)
-			if (optradio === "1") {
-					return "high";
-				}
-				else if (optradio === "2") {
-					return "medium";
-				}
-				else if (optradio === "3") {
-					return "low";
-				}
-
-		}
-
-				console.log(optradio);
+			}
+				
 	
 	}
+
 
 
 	
@@ -152,15 +142,15 @@ function compareDates(enddate, currentdate, status, key, startdate, category, de
 }
 
 function displaypriority(priority) {
-			if (priority === 1) {
+			if (priority === "1") {
 				priority = "high";
 				
 			}
-			else if (priority === 2) {
+			else if (priority === "2") {
 				priority = "medium";
 			
 			}
-			else {
+			else if (priority === "3"){
 				priority = "low";
 			
 			}
@@ -169,6 +159,7 @@ function displaypriority(priority) {
 
 
 function checkStatus(category, description, status, priority) {
+	priority = displaypriority(priority)
 	if (status === "done") {
 		return  '<p class="done">' + category + " " +  description + priority + '</p>'
 	}
@@ -265,7 +256,15 @@ function sortByPriority () {
         priorities.push(myobj);
          
  
-       priorities.sort();
+      priorities.sort(function(a, b){
+ 
+   //compare two values
+   if(a.priority.toLowerCase() < b.priority.toLowerCase()) return -1;
+ 
+  if(a.priority.toLowerCase() > b.priority.toLowerCase()) return 1;
+ return 0;
+ });
+ 
    }
     console.log(priorities)
     $('.zadania').empty();
@@ -276,4 +275,5 @@ function sortByPriority () {
         compareDates(object.endDate, currentdate, object.taskstatus, key, object.startDate, object.category, object.desc, object.priority);
     }
  
+
 }
