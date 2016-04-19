@@ -17,12 +17,7 @@ $('#second').click(function(event)  {
 $(document).click( function () {
   $('#secondul').hide();
 });
-$('body').click( function (e) {
-   var target = $(e.target);
-    if(!target.is('#search') && !target.is('.glyphicon-search')) {
-       $('#search').hide();
-     }
-});
+
 
 $('#third').click(function(event)  {
   event.stopPropagation();
@@ -214,6 +209,9 @@ $('#next').click(function () {
                    if (myobj.startDate > currentdate & myobj.startDate<=dateplusseven1) {
                             compareDates(myobj.endDate, currentdate, myobj.taskstatus, key, myobj.startDate, myobj.category, myobj.desc); 
                     
+                    }
+                    else {
+                      $('.zadania').val("Not found");
                     }
            
             }

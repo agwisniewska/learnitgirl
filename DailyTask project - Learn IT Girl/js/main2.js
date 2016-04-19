@@ -339,7 +339,11 @@ function search() {
 
       }
     $('.zadania').empty();
+	
+
+	
 	var search = $('#search').val();
+	var notfound = true;
        // console.log(tasks);
        var searchvalue;
        for (var i=0; i<tasks.length; i++) {
@@ -348,15 +352,16 @@ function search() {
 
        		if (searchvalue.indexOf(search) != -1) {
 					console.log(search);
-				
 					compareDates(tasks[i].endDate, currentdate, tasks[i].taskstatus, key, tasks[i].startDate, tasks[i].category, tasks[i].desc, tasks[i].priority);
-	  
+	 				notfound = false;
+      		 }
+      		
 
-       		
-       }
-   
-	
-      }  
-    
+     	} 
+     	if (notfound) {
+     		$('.zadania').append('Not found')	
+
+     	}
+       
        
 }
