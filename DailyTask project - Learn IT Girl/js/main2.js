@@ -326,3 +326,37 @@ function sortByStatus() {
 
 
 }
+
+function search() {
+	var tasks = [];
+    for(var i=0; i<localStorage.length; i++) {
+        var key = localStorage.key(i);
+        var value = localStorage[key];
+        var myobj = JSON.parse(value);
+        tasks.push(myobj);
+        // console.log(tasks);
+
+
+      }
+    $('.zadania').empty();
+	var search = $('#search').val();
+       // console.log(tasks);
+       var searchvalue;
+       for (var i=0; i<tasks.length; i++) {
+			searchvalue = tasks[i].desc;
+			// console.log(searchvalue)
+
+       		if (searchvalue.indexOf(search) != -1) {
+					console.log(search);
+				
+					compareDates(tasks[i].endDate, currentdate, tasks[i].taskstatus, key, tasks[i].startDate, tasks[i].category, tasks[i].desc, tasks[i].priority);
+	  
+
+       		
+       }
+   
+	
+      }  
+    
+       
+}
