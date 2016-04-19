@@ -16,7 +16,13 @@ $('#second').click(function(event)  {
 
 $(document).click( function () {
   $('#secondul').hide();
-})
+});
+$('body').click( function (e) {
+   var target = $(e.target);
+    if(!target.is('#search') && !target.is('.glyphicon-search')) {
+       $('#search').hide();
+     }
+});
 
 $('#third').click(function(event)  {
   event.stopPropagation();
