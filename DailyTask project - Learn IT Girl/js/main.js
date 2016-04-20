@@ -79,9 +79,20 @@ $("#createtask").click(function(){
 
 
 $('#creator').click(function() {
-    $('#myModal').modal('hide');
+    if (!validateDescription() && !validateStartDate() && !validateEndDate()) {
+    submitPrompt("COMPLETE FORM!", "submitPrompt", "red");
 
+    return false;
+  }
+  else if (validateDescription() && validateStartDate() && validateEndDate()){
+    createTask();
+    submitPrompt("OK!", "submitPrompt", "green");
+    $("#myModal").hide();
+
+  }
 });
+
+
 
 $('#creator2').click(function() {
     $('#Modal').modal('hide');
@@ -220,4 +231,52 @@ $('#next').click(function () {
 
      });
 
+function validateDescription() {
+  var name = document.getElementById('taskdesc').value;
+  if (name.length == 0) {
+    producePrompt("Description is required", "commentDescription", "taskdesc", "red", "solid 1px red");
+    return false;
+  }
+  producePrompt("OK!", "commentDescription", "tascdesc", "green", "solid 1px green");
+  return true;
+}
+
+function validateStartDate() {
+  var name = document.getElementById('datepicker').value;
+
+
+  if (name.length == 0) {
+    producePrompt("StartDate is required", "commentStartDate", "datepicker", "red", "solid 1px red");
+    return false;
+  }
+    producePrompt("OK!", "commentStartDate", "datepicker", "green", "solid 1px green");
+  return true;
+}
+
+function validateEndDate() {
+  var name = document.getElementById('datepicker2').value;
+  
+  if (name.length == 0) {
+    producePrompt("EndDate is required", "commentEndDate", "datepicker2", "red", "solid 1px red");
+    return false;
+  }
+  producePrompt("OK!", "commentEndDate", "datepicker2", "green", "solid 1px green");
+  return true;
+}
+function hidePrompt() {
+    document.getElementById('submitPrompt').style.display = "none";
+}
+
+function producePrompt(message, promptLocation, borderLocation, color, border) {
+  document.getElementById(promptLocation).innerHTML = message;
+  document.getElementById(promptLocation).style.color = color;
+  document.getElementById(borderLocation).style.border = border;
+}
+
+function submitPrompt(message, promptLocation, color) {
+  document.getElementById(promptLocation).innerHTML = message;
+  document.getElementById(promptLocation).style.color = color;
+}
+
 });
+
