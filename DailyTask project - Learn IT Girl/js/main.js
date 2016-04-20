@@ -118,6 +118,9 @@ $('body').on('click', 'div.edit', function() {
 });
 // function executes on trash click which removes data (div) from main view and localStorage
 $('body').on('click', 'div.trash', function() {
+  
+
+
    $(this).parent().remove();
    var id = $(this).parent().attr('id');
       if(id in localStorage){
