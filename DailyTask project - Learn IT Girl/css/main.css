@@ -114,12 +114,6 @@ h2 {
 	margin-top: 30px;
 	margin-bottom: 10px;
 
-.alert {
-	display: none;
-}
-
-
-
 }
 
 .innerbox {
@@ -225,9 +219,9 @@ button.close {
 	padding: 15px;
 }
 
-.modal-content {
-	width: 1000px;
-	height: 800px;
+.formstructure {
+	width: 600px;
+	height: 400px;
 }
 
 h4 {
@@ -276,4 +270,8 @@ p3 {
 	color: "#FF0000";
 	font-weight: bold;
 
+}
+/* 0 */
+.modal-dialog {
+	height: 200px;
 }

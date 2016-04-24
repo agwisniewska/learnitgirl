@@ -79,17 +79,15 @@ $("#createtask").click(function(){
 
 
 $('#creator').click(function() {
-    if (!validateDescription() && !validateStartDate() && !validateEndDate()) {
-    submitPrompt("COMPLETE FORM!", "submitPrompt", "red");
+  //   if (!validateDescription() && !validateStartDate() && !validateEndDate()) {
+  //   submitPrompt("COMPLETE FORM!", "submitPrompt", "red");
 
-    return false;
-  }
-  else if (validateDescription() && validateStartDate() && validateEndDate()){
+  //   return false;
+  // }
+  // else if (validateDescription() && validateStartDate() && validateEndDate()){
     createTask();
-    submitPrompt("OK!", "submitPrompt", "green");
+    // submitPrompt("OK!", "submitPrompt", "green");
     $("#myModal").hide();
-
-  }
 });
 
 
@@ -116,17 +114,29 @@ $('body').on('click', 'div.edit', function() {
     $("input[name=optradio2][value=" + object.priority + "]").prop('checked', true);
 
 });
-// function executes on trash click which removes data (div) from main view and localStorage
+// function to remove task, using a special jquery confirm function. Because trash is dynamically created item I have to call confirm in body onclick function 
 $('body').on('click', 'div.trash', function() {
-  
-
-
-   $(this).parent().remove();
-   var id = $(this).parent().attr('id');
-      if(id in localStorage){
-        localStorage.removeItem(id);  
-          }
+    var result = $(this).confirm({
+    text: "Are you sure you want to delete that task?",
+    confirm: function(button) {
+       $(result).parent().remove();
+       var id = $(result).parent().attr('id');
+        if(id in localStorage){
+          localStorage.removeItem(id);
+        }
+    },
+    cancel: function(button) {
+        // nothing to do
+    },
+    confirmButton: "Yes",
+    cancelButton: "No",
+    confirmButtonClass: "btn-danger",
+    cancelButtonClass: "btn-default",
+    dialogClass: "modal-dialog a" // Bootstrap classes for large modal
+  });
 });
+      
+
 // Here I run functions on mouseover effect which help me to change task status and placed them in localStroage.
 $('body').on('click', 'div#dn', function () {
 
@@ -154,12 +164,15 @@ $('body').on('click', 'div#td', function () {
 
 $('body').on('click', 'div#do', function () {
   
-    var id = $(this).parent().parent().parent().parent().attr('id');
+  var id = $(this).parent().parent().parent().parent().attr('id');
    var value = localStorage[id];
    var object = JSON.parse(value);
    object.taskstatus = "2";
    console.log(object.taskstatus)
    localStorage.setItem(id, JSON.stringify(object));   
+  //  $('#clock').timeTo({
+  //   seconds: 100
+  // });
    $('.zadania').empty();
       printKeys();
 
@@ -229,57 +242,61 @@ $('#next').click(function () {
                     }
            
             }
-   
-
 
      });
 
-function validateDescription() {
-  var name = document.getElementById('taskdesc').value;
-  if (name.length == 0) {
-    producePrompt("Description is required", "commentDescription", "taskdesc", "red", "solid 1px red");
-    return false;
-  }
-  producePrompt("OK!", "commentDescription", "tascdesc", "green", "solid 1px green");
-  return true;
-}
-
-function validateStartDate() {
-  var name = document.getElementById('datepicker').value;
-
-
-  if (name.length == 0) {
-    producePrompt("StartDate is required", "commentStartDate", "datepicker", "red", "solid 1px red");
-    return false;
-  }
-    producePrompt("OK!", "commentStartDate", "datepicker", "green", "solid 1px green");
-  return true;
-}
-
-function validateEndDate() {
-  var name = document.getElementById('datepicker2').value;
-  
-  if (name.length == 0) {
-    producePrompt("EndDate is required", "commentEndDate", "datepicker2", "red", "solid 1px red");
-    return false;
-  }
-  producePrompt("OK!", "commentEndDate", "datepicker2", "green", "solid 1px green");
-  return true;
-}
-function hidePrompt() {
-    document.getElementById('submitPrompt').style.display = "none";
-}
-
-function producePrompt(message, promptLocation, borderLocation, color, border) {
-  document.getElementById(promptLocation).innerHTML = message;
-  document.getElementById(promptLocation).style.color = color;
-  document.getElementById(borderLocation).style.border = border;
-}
-
-function submitPrompt(message, promptLocation, color) {
-  document.getElementById(promptLocation).innerHTML = message;
-  document.getElementById(promptLocation).style.color = color;
-}
+  $('#clock').timeTo();
 
 });
+
+
+
+// function validateDescription() {
+//   var name = document.getElementById('taskdesc').value;
+//   if (name.length == 0) {
+//     producePrompt("Description is required", "commentDescription", "taskdesc", "red", "solid 1px red");
+//     return false;
+//   }
+//   producePrompt("OK!", "commentDescription", "tascdesc", "green", "solid 1px green");
+//   return true;
+// }
+
+// function validateStartDate() {
+//   var name = document.getElementById('datepicker').value;
+
+
+//   if (name.length == 0) {
+//     producePrompt("StartDate is required", "commentStartDate", "datepicker", "red", "solid 1px red");
+//     return false;
+//   }
+//     producePrompt("OK!", "commentStartDate", "datepicker", "green", "solid 1px green");
+//   return true;
+// }
+
+// function validateEndDate() {
+//   var name = document.getElementById('datepicker2').value;
+  
+//   if (name.length == 0) {
+//     producePrompt("EndDate is required", "commentEndDate", "datepicker2", "red", "solid 1px red");
+//     return false;
+//   }
+//   producePrompt("OK!", "commentEndDate", "datepicker2", "green", "solid 1px green");
+//   return true;
+// }
+// function hidePrompt() {
+//     document.getElementById('submitPrompt').style.display = "none";
+// }
+
+// function producePrompt(message, promptLocation, borderLocation, color, border) {
+//   document.getElementById(promptLocation).innerHTML = message;
+//   document.getElementById(promptLocation).style.color = color;
+//   document.getElementById(borderLocation).style.border = border;
+// }
+
+// function submitPrompt(message, promptLocation, color) {
+//   document.getElementById(promptLocation).innerHTML = message;
+//   document.getElementById(promptLocation).style.color = color;
+// }
+
+// });
 
