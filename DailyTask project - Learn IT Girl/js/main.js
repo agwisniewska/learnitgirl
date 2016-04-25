@@ -250,52 +250,74 @@ $('#next').click(function () {
 
 
 
-// function validateDescription() {
-//   var name = document.getElementById('taskdesc').value;
-//   if (name.length == 0) {
-//     producePrompt("Description is required", "commentDescription", "taskdesc", "red", "solid 1px red");
-//     return false;
-//   }
-//   producePrompt("OK!", "commentDescription", "tascdesc", "green", "solid 1px green");
-//   return true;
-// }
+function validateDescription() {
+  var name = document.getElementById('taskdesc').value;
+  if (name.length === 0) {
+    producePrompt("Description is required", "commentDescription", "red");
+    return false;
+  }
+    producePrompt("OK!", "commentDescription", "green");
+ 
+   return true;
 
-// function validateStartDate() {
-//   var name = document.getElementById('datepicker').value;
+ 
+}
 
+function validateStartDate() {
+  var name = document.getElementById('datepicker').value;
 
-//   if (name.length == 0) {
-//     producePrompt("StartDate is required", "commentStartDate", "datepicker", "red", "solid 1px red");
-//     return false;
-//   }
-//     producePrompt("OK!", "commentStartDate", "datepicker", "green", "solid 1px green");
-//   return true;
-// }
-
-// function validateEndDate() {
-//   var name = document.getElementById('datepicker2').value;
+  if (name.length === 0) {
+    producePrompt("StartDate is required","commentStartDate", "red")
+    return false;
+  }
   
-//   if (name.length == 0) {
-//     producePrompt("EndDate is required", "commentEndDate", "datepicker2", "red", "solid 1px red");
-//     return false;
-//   }
-//   producePrompt("OK!", "commentEndDate", "datepicker2", "green", "solid 1px green");
-//   return true;
-// }
-// function hidePrompt() {
-//     document.getElementById('submitPrompt').style.display = "none";
-// }
+  producePrompt("OK!", "commentStartDate", "green");
+  return true;
+ 
 
-// function producePrompt(message, promptLocation, borderLocation, color, border) {
-//   document.getElementById(promptLocation).innerHTML = message;
-//   document.getElementById(promptLocation).style.color = color;
-//   document.getElementById(borderLocation).style.border = border;
-// }
 
-// function submitPrompt(message, promptLocation, color) {
-//   document.getElementById(promptLocation).innerHTML = message;
-//   document.getElementById(promptLocation).style.color = color;
-// }
+}
 
-// });
+function validateEndDate() {
+  var name = document.getElementById('datepicker2').value;
+  
+  if (name.length === 0) {
+    producePrompt("EndDate is required", "commentEndDate", "red");
+    return false;
+    }
+    producePrompt("OK!", "commentEndDate", "green");    
+      return true
+  
+  }
+
+function producePrompt(message, promptLocation, color) {
+  document.getElementById(promptLocation).innerHTML = message;
+  document.getElementById(promptLocation).style.color = color;
+}
+
+
+
+function hidePrompt() {
+    document.getElementById('submitPrompt').style.display = "none";
+}
+
+
+function validateForm() {
+  if (!validateDescription() && !validateStartDate() && !validateEndDate()) {
+      
+      submitPrompt("COMPLETE THE FORM!", 'submitPrompt', 'red');
+
+
+      return false
+  }
+}
+
+
+
+function submitPrompt(message, promptLocation, color) {
+  document.getElementById(promptLocation).innerHTML = message;
+  document.getElementById(promptLocation).style.color = color;
+}
+
+
 
