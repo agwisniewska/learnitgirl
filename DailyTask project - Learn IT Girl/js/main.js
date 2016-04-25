@@ -79,8 +79,9 @@ $("#createtask").click(function(){
 
 
 $('#creator').click(function() {
-    createTask();
-
+    checkForm()
+    // createTask();
+    hideComments();
     $("#myModal").modal('hide');
 });
 
@@ -256,7 +257,7 @@ function validateDescription() {
     producePrompt("Description is required", "commentDescription", "red");
     return false;
   }
-    producePrompt("OK!", "commentDescription", "green");
+    producePrompt("OK", "commentDescription", "green");
  
    return true;
 
@@ -264,14 +265,15 @@ function validateDescription() {
 }
 
 function validateStartDate() {
-  var name = document.getElementById('datepicker').value;
+  
 
-  if (name.length === 0) {
+  if($("#datepicker").datepicker("getDate") === null) {
+
     producePrompt("StartDate is required","commentStartDate", "red")
     return false;
   }
   
-  producePrompt("OK!", "commentStartDate", "green");
+  producePrompt("OK", "commentStartDate", "green");
   return true;
  
 
@@ -285,7 +287,7 @@ function validateEndDate() {
     producePrompt("EndDate is required", "commentEndDate", "red");
     return false;
     }
-    producePrompt("OK!", "commentEndDate", "green");    
+    producePrompt("OK", "commentEndDate", "green");    
       return true
   
   }
@@ -296,6 +298,12 @@ function producePrompt(message, promptLocation, color) {
 }
 
 
+function hideComments() {
+  $('#commentDescription').empty();
+  $('#commentStartDate').empty();
+  $('#commentEndDate').empty();
+  $('#submitPrompt').empty();
+}
 
 function hidePrompt() {
     document.getElementById('submitPrompt').style.display = "none";
@@ -320,4 +328,11 @@ function submitPrompt(message, promptLocation, color) {
 }
 
 
-
+function checkForm() {
+  
+  if (!validateDescription() || !validateStartDate() || !validateEndDate() ) {
+    submitPrompt("COMPLETE THE FORM!", 'submitPrompt', 'red');
+    return false
+  }
+  createTask();
+}
