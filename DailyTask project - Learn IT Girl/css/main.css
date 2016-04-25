@@ -275,3 +275,6 @@ p3 {
 .modal-dialog {
 	height: 200px;
 }
+.alert-success {
+	display: none;
+}

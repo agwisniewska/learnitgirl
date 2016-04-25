@@ -79,15 +79,9 @@ $("#createtask").click(function(){
 
 
 $('#creator').click(function() {
-  //   if (!validateDescription() && !validateStartDate() && !validateEndDate()) {
-  //   submitPrompt("COMPLETE FORM!", "submitPrompt", "red");
-
-  //   return false;
-  // }
-  // else if (validateDescription() && validateStartDate() && validateEndDate()){
     createTask();
-    // submitPrompt("OK!", "submitPrompt", "green");
-    $("#myModal").hide();
+
+    $("#myModal").modal('hide');
 });
 
 
@@ -117,7 +111,7 @@ $('body').on('click', 'div.edit', function() {
 // function to remove task, using a special jquery confirm function. Because trash is dynamically created item I have to call confirm in body onclick function 
 $('body').on('click', 'div.trash', function() {
     var result = $(this).confirm({
-    text: "Are you sure you want to delete that task?",
+    text: "Are you sure to delete that task?",
     confirm: function(button) {
        $(result).parent().remove();
        var id = $(result).parent().attr('id');
@@ -132,7 +126,7 @@ $('body').on('click', 'div.trash', function() {
     cancelButton: "No",
     confirmButtonClass: "btn-danger",
     cancelButtonClass: "btn-default",
-    dialogClass: "modal-dialog a" // Bootstrap classes for large modal
+    dialogClass: "modal-dialog ag" // Bootstrap classes for large modal
   });
 });
       
@@ -150,6 +144,11 @@ $('body').on('click', 'div#dn', function () {
     $('.zadania').empty();
       printKeys();
 });
+
+$('body').on('click', 'alert-success', function () {
+  $('.alert-success').fadeOut( "slow" );
+});
+
 $('body').on('click', 'div#td', function () {
    
 

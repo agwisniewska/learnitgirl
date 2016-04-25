@@ -55,6 +55,8 @@ function createTask() {
 	//  Here I clear from from all data inserted
 	clearForm();
 
+	$('.alert-success').show();
+
 
 
 
