@@ -20,10 +20,6 @@ function createTask() {
 
 
 
-	
-
-
-
 
 	// then I create and object TASK
 	var task = {}
@@ -54,7 +50,7 @@ function createTask() {
 	printKeys();
 	//  Here I clear from from all data inserted
 	clearForm();
-
+	// here I am showing an alert to confirm user's action. 
 	$('.alert-success').show();
 
 
@@ -62,10 +58,9 @@ function createTask() {
 
 }
 
+ 
 
-	
-
-// here I create and icon trash which is a part of each div.box generated on page. The same for edit and hamburgermenu icon.
+// Here I create and icon trash which is a part of each div.box generated on page. The same for edit and hamburgermenu icon.
 var trash = '<div class="trash"> \
 <span class="glyphicon glyphicon-trash" aria-hidden="true"> \
 </span>\
@@ -83,7 +78,9 @@ var hamburgermenu= '<div class="dropdown hamburger"> \
 </div>\
 </span>\
 </div>'
-
+var checkbox ='<div class="checkbox"> \
+  <input type="checkbox" value="checkbox">\
+</div>'
 
 var currentDate = new Date()
 var dateplusseven = new Date(new Date().getTime()+(7*24*60*60*1000));
@@ -116,7 +113,7 @@ function printKeys() {
 // Here I check task's status. Function have three arguments, and depending on the status I create different content
 function compareDates(enddate, currentdate, status, key, startdate, category, desc, priority) {
 	 	if ( enddate === currentdate & status === "todo") {
-	   		var div = '<div class	="box"	id="' + key + '">' + trash + edit + hamburgermenu + '<h3>' + startdate + " "  + enddate + checkStatus(category, desc, status, priority) + '</h3>'  +'</div>';
+	   		var div = '<div class	="box"	id="' + key + '">' + trash + edit + hamburgermenu + checkbox + '<h3>' + startdate + " "  + enddate + checkStatus(category, desc, status, priority) + '</h3>'  +'</div>';
 	   		$('.zadania').append(div);
 	   		$('#'+key).css("background-color","#FFFF99");
 	   		$('#'+key).prop('title', 'Finish your task today to follow your plan!');
@@ -127,7 +124,7 @@ function compareDates(enddate, currentdate, status, key, startdate, category, de
 
 	   	}
 	   	else if  (enddate < currentdate & status == "todo") {
-			var div = '<div class	="box"	id="' + key + '">' + trash + edit + hamburgermenu + '<h3>' + startdate + " "  + enddate + checkStatus(category, desc, status, priority) + '</h3>'  +'</div>';	   	
+			var div = '<div class	="box"	id="' + key + '">' + trash + edit + hamburgermenu + checkbox + '<h3>' + startdate + " "  + enddate + checkStatus(category, desc, status, priority) + '</h3>'  +'</div>';	   	
 	   		$('.zadania').append(div);
 	   		$('#'+key).css("background-color","#FF6666");
 	   		$('#'+key ).prop('title', 'Overdue task');
@@ -137,7 +134,7 @@ function compareDates(enddate, currentdate, status, key, startdate, category, de
 
 	   	}
 	   	else {
-			var div = '<div class	="box"	id="' + key + '">' + trash + edit + hamburgermenu + '<h3>' + startdate + " "  + enddate + checkStatus(category, desc, status, priority) + '</h3>'  +'</div>';
+			var div = '<div class	="box"	id="' + key + '">' + trash + edit + hamburgermenu + checkbox +'<h3>' + startdate + " "  + enddate + checkStatus(category, desc, status, priority) + '</h3>'  +'</div>';
 	   		$('.zadania').append(div);
 	   	}
 	  	
@@ -181,7 +178,7 @@ function checkStatus(category, description, status, priority) {
 	if (status === "done") {
 		return  '<p class="done">' + category + " " +  description + priority + '</p>'
 	}
-	else if (status=== "todo" ) {
+	else if (status === "todo" ) {
 		return '<p>' + '<span class="label label-danger">To do</span>' + category + " " +  description + " " + priority +'</p>'
 	}
 	else if (status === "doing") {

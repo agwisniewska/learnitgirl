@@ -278,3 +278,11 @@ p3 {
 .alert-success {
 	display: none;
 }
+
+.checkbox {
+	margin-left: 770px;
+
+}
+input[type=checkbox] {
+	margin-top:  20px;
+}
