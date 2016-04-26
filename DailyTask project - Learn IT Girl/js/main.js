@@ -37,8 +37,25 @@ $('.box').dblclick(function() {
 $('#createtask').click(function () {
 	$('#form').toggle();
 })
+ 
+ $('body').on('click', 'input[type="checkbox"]', function(){
+            if($(this).prop("checked") == true){
+            var code = prompt('Podaj 4 cyfrowy kod');
+            console.log(code);
+            var id = $('input[type="checkbox"]').parent().parent().attr('id');
+        
+            if (id in localStorage) {
+              var value = localStorage[id];
+              var object = JSON.parse(value);
+              object.codetoopen = code;
+              localStorage.setItem(id, JSON.stringify(object));  
 
-
+              }
+            }
+            else if($(this).prop("checked") == false){
+             
+            }
+        });
 $('.buttonmenu').click(function() {
 	$(this).next('.dropdown-menu').toggle();
 })

@@ -32,6 +32,7 @@ function createTask() {
 	task.startDate = startDate;
 	task.endDate = endDate;
 	task.priority = optradio;
+	task.codetoopen = '';
 
 	if(typeof(Storage)!=="undefined")
 		{
