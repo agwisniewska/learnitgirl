@@ -42,24 +42,46 @@ $('#createtask').click(function () {
             if($(this).prop("checked") == true){
             var code = prompt('Podaj 4 cyfrowy kod');
             console.log(code);
-            var id = $('input[type="checkbox"]').parent().parent().attr('id');
-        
+            var id = $(this).parent().parent().attr('id');
             if (id in localStorage) {
               var value = localStorage[id];
               var object = JSON.parse(value);
               object.codetoopen = code;
-              localStorage.setItem(id, JSON.stringify(object));  
+              console.log(object);
+              localStorage.setItem(id, JSON.stringify(object)); 
+               $(this).parent().siblings().hide();
+       
 
+              
               }
-            }
-            else if($(this).prop("checked") == false){
              
             }
+
+        
         });
 $('.buttonmenu').click(function() {
 	$(this).next('.dropdown-menu').toggle();
 })
 
+
+$('body').on('dblclick', '.box', function () {
+  var id =  $(this).attr('id');
+  console.log(id);
+   if (id in localStorage) {
+    var value = localStorage[id];
+    var object = JSON.parse(value);
+    console.log(object.codetoopen);
+         if (object.codetoopen != '') {
+              var result = prompt ("Podaj właściwy kod, żeby zobaczyć zadanie");
+              if (result == object.codetoopen) {
+                  $('box.id').child().show();
+              }
+              else {
+                alert("Podałeś niepoprawny kod!")
+              }
+         }
+}
+});
 
     $('#datepicker').datepicker({
     	altFormat: "yy-mm-dd",
