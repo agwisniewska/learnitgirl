@@ -170,6 +170,7 @@ h2 {
 .search {
 	display:none;
 	margin-bottom: 20px;
+	
 }
 
 #creator {
@@ -285,4 +286,13 @@ p3 {
 }
 input[type=checkbox] {
 	margin-top:  20px;
+}
+
+.clock1 {
+	display: inline;
+	font-size: 25px;
+	font-weight: bold;
+	margin-top: 2searpx;
+
+
 }
