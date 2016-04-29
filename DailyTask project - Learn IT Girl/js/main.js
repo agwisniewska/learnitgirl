@@ -112,6 +112,7 @@ $('body').on('dblclick', '.box', function () {
               if (result == object.codetoopen) {
                   alert("ok!")
                   codetoopen = "";
+                  localStorage.setItem(id, JSON.stringify(object));
                   $('#'+id).children().siblings().show();
 
               }
