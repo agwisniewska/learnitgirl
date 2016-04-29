@@ -111,8 +111,8 @@ $('body').on('dblclick', '.box', function () {
               var result = prompt ("Podaj właściwy kod, żeby zobaczyć zadanie");
               if (result == object.codetoopen) {
                   alert("ok!")
-                  codetoopen = "" ;
-                
+                  codetoopen = "";
+                  $('#'+id).children().siblings().show();
 
               }
               else {
