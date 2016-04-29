@@ -100,22 +100,27 @@ $('.buttonmenu').click(function() {
 
 
 $('body').on('dblclick', '.box', function () {
-  var id =  $(this).attr('id');
-  console.log(id);
-   if (id in localStorage) {
-    var value = localStorage[id];
-    var object = JSON.parse(value);
-    console.log(object.codetoopen);
+    var id =  $(this).attr('id');
+    console.log(id);
+    if (id in localStorage) {
+      var value = localStorage[id];
+      var object = JSON.parse(value);
+      var codetoopen = object.codetoopen
+      console.log(object.codetoopen);
          if (object.codetoopen != '') {
               var result = prompt ("Podaj właściwy kod, żeby zobaczyć zadanie");
               if (result == object.codetoopen) {
                   alert("ok!")
+                  codetoopen = "" ;
+                
+
               }
               else {
                 alert("Podałeś niepoprawny kod!")
               }
          }
-}
+  }
+  
 });
 
     $('#datepicker').datepicker({

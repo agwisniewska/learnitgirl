@@ -106,33 +106,43 @@ function printKeys() {
 	   
 	   	// Here I compare task.end  date with actual date and status and according to this I generate div background color and a message
 	  	// console.log(myobj.priority);
-	   	compareDates(myobj.endDate, currentdate, myobj.taskstatus, key, myobj.startDate, myobj.category, myobj.desc, myobj.priority);
+	   	compareDates(myobj.endDate, currentdate, myobj.taskstatus, key, myobj.startDate, myobj.category, myobj.desc, myobj.priority, myobj.codetoopen);
 	  
 	    
 	}
 }
 // Here I check task's status. Function have three arguments, and depending on the status I create different content
-function compareDates(enddate, currentdate, status, key, startdate, category, desc, priority) {
-	 	if ( enddate === currentdate & status === "todo") {
-	   		var div = '<div class	="box"	id="' + key + '">' + trash + edit + hamburgermenu + checkbox + '<h3>' + startdate + " "  + enddate + checkStatus(category, desc, status, priority) + '</h3>'  +'</div>';
-	   		$('.zadania').append(div);
-	   		$('#'+key).css("background-color","#FFFF99");
-	   		$('#'+key).prop('title', 'Finish your task today to follow your plan!');
-	   		$('#'+key).closest().tooltip(
-	   			{ track: true }
-	   			);
+function compareDates(enddate, currentdate, status, key, startdate, category, desc, priority, code) {
+	 	if ( enddate === currentdate && status === "1" ) {
+	 		if ( code != '') {
+	   			var div = '<div class	="box"	id="' + key + '">' + trash + edit + hamburgermenu + checkbox   +'</div>';
+	   			$('.zadania').append(div);
+	   		} else{
 
+		   		var div = '<div class	="box"	id="' + key + '">' + trash + edit + hamburgermenu + checkbox + '<h3>' + startdate + " "  + enddate + checkStatus(category, desc, status, priority) + '</h3>'  +'</div>';
+		   		$('.zadania').append(div);
+		   		$('#'+key).css("background-color","#FFFF99");
+		   		$('#'+key).prop('title', 'Finish your task today to follow your plan!');
+		   		$('#'+key).closest().tooltip(
+		   			{ track: true }
+		   		);
+	   		}
 
 	   	}
-	   	else if  (enddate < currentdate & status == "todo") {
-			var div = '<div class	="box"	id="' + key + '">' + trash + edit + hamburgermenu + checkbox + '<h3>' + startdate + " "  + enddate + checkStatus(category, desc, status, priority) + '</h3>'  +'</div>';	   	
-	   		$('.zadania').append(div);
-	   		$('#'+key).css("background-color","#FF6666");
-	   		$('#'+key ).prop('title', 'Overdue task');
-	   		$('#'+key).closest().tooltip(
-	   			{ track: true }
-	   			);
+	   	else if  (enddate < currentdate && status === "1" ) {
+	   		if ( code != '') {
+		   		var div = '<div class	="box"	id="' + key + '">' + trash + edit + hamburgermenu + checkbox   +'</div>';
+		   		$('.zadania').append(div);
+		   	} else {
+				var div = '<div class	="box"	id="' + key + '">' + trash + edit + hamburgermenu + checkbox + '<h3>' + startdate + " "  + enddate + checkStatus(category, desc, status, priority) + '</h3>'  +'</div>';	   	
+		   		$('.zadania').append(div);
+		   		$('#'+key).css("background-color","#FF6666");
+		   		$('#'+key ).prop('title', 'Overdue task');
+		   		$('#'+key).closest().tooltip(
+	   				{ track: true }
 
+	   			);
+		   	}
 	   	}
 	   	else {
 			var div = '<div class	="box"	id="' + key + '">' + trash + edit + hamburgermenu + checkbox +'<h3>' + startdate + " "  + enddate + checkStatus(category, desc, status, priority) + '</h3>'  +'</div>';
