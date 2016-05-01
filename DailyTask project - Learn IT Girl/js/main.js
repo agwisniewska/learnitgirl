@@ -172,7 +172,8 @@ $('body').on('dblclick', '.box', function () {
                   console.log(localStorage);
                   $('#'+id).children().siblings().show();
                   $('.zadania').empty();
-                  compareDates(myobj.endDate, currentdate, myobj.taskstatus, id, myobj.startDate, myobj.category, myobj.desc, myobj.priority, myobj.codetoopen);
+                  printKeys();
+                  // compareDates(myobj.endDate, currentdate, myobj.taskstatus, id, myobj.startDate, myobj.category, myobj.desc, myobj.priority, myobj.codetoopen);
                   $('#'+id).children('.checkbox').children().prop( "checked", false );
 
 
