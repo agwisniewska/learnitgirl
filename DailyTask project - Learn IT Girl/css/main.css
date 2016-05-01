@@ -297,10 +297,11 @@ input[type=checkbox] {
 
 }
 
-#alarm {
+#alarm2 {
 	margin-left: 600px;
 	display: none;
 	margin-top: 10px;
+	margin-bottom: 20px;
 
 }
 
@@ -308,4 +309,35 @@ input[type=checkbox] {
 	background-color: #337ab7;
 	border: 0px;
 	margin-left: 650px;
+}
+
+.form-control-alarm {
+	display: inline-block;
+	width: 20px;
+	vertical-align:top;
+}
+
+
+.form-group-alarm {
+	display: inline;
+	text-align: center;
+
+}
+
+.alarm { 
+height: 150px;
+}
+
+#myModalLabel {
+	text-align: center;
+	margin-top: 20px;
+
+}
+
+.alarmbutton {
+	margin-left: 500px;
+}
+.alarmbody {
+		margin-left: 128px;
+		margin-top: 4px
 }

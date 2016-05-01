@@ -1,14 +1,43 @@
 $(document).ready(function() {
 
 
-var alarm = 3600; 
-  $("#alarm").timeTo(alarm, function(){ alert('Countdown finished'); });
-   console.log(typeof(alarm));
 
 $('.btn-info').click(function () {
-  $("#alarm").show();
+  $("#basicModal").modal('show');
 })
 
+
+$('.alarmbutton').click(function () {
+  if ($('#alarmhours').val() != 0) {
+  var hours = parseInt($('#alarmhours').val()) * 3600;
+  }
+  else {
+    var hours = 0;
+  }
+  if ($('#alarmminutes').val() != 0) {
+  var minutes = parseInt($('#alarmminutes').val()) * 60;
+  }
+  else {
+    var minutes = 0;
+  }
+  if ($('#alarmsecond').val() != 0) {
+    var seconds = parseInt($('#alarmsecond').val());
+  }
+  else {
+    var seconds = 0;
+  }
+
+  var sum = hours + minutes + seconds;
+  console.log(sum);
+   
+   $("#alarm2").show();
+   $("#alarm2").timeTo(sum, function(){ 
+    alert('Countdown finished'); 
+    $('#alarm2').hide();
+  });
+
+   $('#basicModal').modal('hide');
+})
 
 
 

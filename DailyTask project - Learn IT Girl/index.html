@@ -84,12 +84,39 @@
 					</div>
 
 					<div class="col-lg-9 col-md-9 col-sm-12 col-xs-12">
-					<div class="alert alert-success">
-							<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-							You have added your task
-					</div>
-					<div id="alarm">  </div>
-					<button type="button" class="btn btn-info">Set alarm</button> 
+						<div class="alert alert-success">
+								<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+								You have added your task
+						</div>
+						<div id="alarm2">  </div>
+							<button type="button" class="btn btn-info">Set alarm</button> 
+						<div class="modal fade" id="basicModal">
+						    <div class="modal-dialog">
+						        <div class="modal-content alarm">
+						           
+						            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">x</button>
+						            <h4 class="modal-title" id="myModalLabel">Set alarm</h4>
+						      
+						            <div class="modal-body alarmbody">
+										<div class="form-group-alarm">
+										  <label for="hours">Hours:</label>
+										  <input type="text" class="form-control-alarm" id="alarmhours">
+										</div>
+										<div class="form-group-alarm">
+										  <label for="minutes">Minutes:</label>
+										  <input type="text" class="form-control-alarm" id="alarmminutes">
+										</div>
+										<div class="form-group-alarm">
+										  <label for="second">Seconds:</label>
+										  <input type="text" class="form-control-alarm" id="alarmsecond">
+										</div>
+						            </div>
+						           
+						                <button type="button" class="btn btn-primary alarmbutton">Save</button>
+						        
+						    </div>
+						  </div>
+						</div>
 
 					
 		
@@ -153,13 +180,14 @@
 								</div>
 							</div>
 						</div>
-
+ 						
 
 						<div class="row">
 							<div class="search">
 								<input type="text" class="form-control" placeholder="Search" id="search" oninput="search()">  
 							</div>
 						</div>
+
 
 
 						
