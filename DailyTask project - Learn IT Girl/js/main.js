@@ -1,7 +1,30 @@
 $(document).ready(function() {
 
 
+var alarm = 3600; 
+  $("#alarm").timeTo(alarm, function(){ alert('Countdown finished'); });
+   console.log(typeof(alarm));
 
+$('.btn-info').click(function () {
+  $("#alarm").show();
+})
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
 
 var monthNames = [ "January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December" ]; 
 var dayNames= ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"]
@@ -85,6 +108,7 @@ $('#createtask').click(function () {
               console.log(object);
               localStorage.setItem(id, JSON.stringify(object)); 
                $(this).parent().siblings().hide();
+               $(this).parent().parent().css("background-color", "E8E8E8");
        
 
               
@@ -100,26 +124,37 @@ $('.buttonmenu').click(function() {
 
 
 $('body').on('dblclick', '.box', function () {
+   
     var id =  $(this).attr('id');
     console.log(id);
     if (id in localStorage) {
       var value = localStorage[id];
-      var object = JSON.parse(value);
-      var codetoopen = object.codetoopen
-      console.log(object.codetoopen);
-         if (object.codetoopen != '') {
+      var myobj = JSON.parse(value);
+    
+      console.log(myobj.codetoopen);
+         if (myobj.codetoopen != '') {
               var result = prompt ("Podaj właściwy kod, żeby zobaczyć zadanie");
-              if (result == object.codetoopen) {
+              if (result == myobj.codetoopen) {
                   alert("ok!")
-                  codetoopen = "";
-                  localStorage.setItem(id, JSON.stringify(object));
+                  
+                  myobj.codetoopen = "";
+                
+                  localStorage.setItem(id, JSON.stringify(myobj));
+                  console.log(localStorage);
                   $('#'+id).children().siblings().show();
+                  $('.zadania').empty();
+                  compareDates(myobj.endDate, currentdate, myobj.taskstatus, id, myobj.startDate, myobj.category, myobj.desc, myobj.priority, myobj.codetoopen);
+                  $('#'+id).children('.checkbox').children().prop( "checked", false );
+
 
               }
               else {
                 alert("Podałeś niepoprawny kod!")
               }
          }
+         // else if (codetoopen=== '') {
+         //   console.log('Code here!')
+         // }
   }
   
 });

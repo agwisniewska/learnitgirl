@@ -296,3 +296,16 @@ input[type=checkbox] {
 
 
 }
+
+#alarm {
+	margin-left: 600px;
+	display: none;
+	margin-top: 10px;
+
+}
+
+.btn-info {
+	background-color: #337ab7;
+	border: 0px;
+	margin-left: 650px;
+}
