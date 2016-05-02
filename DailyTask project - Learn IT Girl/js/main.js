@@ -41,7 +41,27 @@ $('.alarmbutton').click(function () {
 
 
 
+$('body').on('mouseover', '.box', function () {
+  if ($(this).children().css("display") === "none") {
+    $(this).prop('title', 'Double click to see the content');
+          $(this).closest().tooltip(
+            { track: true }
+          );
+  }
 
+});
+
+
+
+$('body').on('mouseover', 'input[type="checkbox"]', function () {
+  if ($(this).prop("checked") == false) {
+      $(this).prop('title', 'Check to make your task private visible on correct code!');
+          $(this).tooltip(
+            { track: true }
+          );
+  }
+
+});
 
 
 

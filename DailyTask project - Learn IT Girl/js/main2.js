@@ -280,17 +280,30 @@ function sortByPriority () {
         var myobj = JSON.parse(value);
         var priority = myobj.priority
         priorities.push(myobj);
-         
+        
  
-      priorities.sort(function(a, b){
+ //  priorities.sort(function(a, b){
+
+ //   compare two values
+ //   if(a.priority.toLowerCase() < b.priority.toLowerCase()) return -1;
  
-   //compare two values
-   if(a.priority.toLowerCase() < b.priority.toLowerCase()) return -1;
+ //  if(a.priority.toLowerCase() > b.priority.toLowerCase()) return 1;
+ // 	return 0;
+ // });
+
+			// priorities.sort(function(a, b){
+			//   return a.priority > b.priority;
+			// });
  
-  if(a.priority.toLowerCase() > b.priority.toLowerCase()) return 1;
- return 0;
- });
- 
+ priorities.sort(function(a, b){
+ var nameA =a.priority.toLowerCase();
+ var nameB =b.priority.toLowerCase();
+ if (nameA < nameB) //sort string ascending
+  return -1 
+ if (nameA > nameB)
+  return 1
+ return 0 //default return value (no sorting)
+});
    }
     console.log(priorities)
     $('.zadania').empty();
