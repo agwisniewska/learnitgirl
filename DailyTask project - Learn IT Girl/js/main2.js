@@ -17,7 +17,7 @@ function createTask() {
 				
 	
 	}
-
+	var estimatedtime = $( "#selectpickertime option:selected" ).val();
 
 
 
@@ -33,6 +33,7 @@ function createTask() {
 	task.endDate = endDate;
 	task.priority = optradio;
 	task.codetoopen = '';
+	task.estimatedtime = estimatedtime;
 
 	if(typeof(Storage)!=="undefined")
 		{

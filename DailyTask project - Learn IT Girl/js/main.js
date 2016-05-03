@@ -32,7 +32,7 @@ $('.alarmbutton').click(function () {
    
    $("#alarm2").show();
    $("#alarm2").timeTo(sum, function(){ 
-    alert('Countdown finished'); 
+    alert('Time is over!'); 
     $('#alarm2').hide();
   });
 
@@ -63,8 +63,12 @@ $('body').on('mouseover', 'input[type="checkbox"]', function () {
 
 });
 
+$("body").click(function(e){  
+   if (e.target.id !== "creator" && $('.alert').is(':visible'))  {
+      $('.alert').hide('slow'); 
+  } 
 
-
+});
 
 
 
@@ -332,9 +336,29 @@ $('body').on('click', 'div#do', function () {
   var id = $(this).parent().parent().parent().parent().attr('id');
    var value = localStorage[id];
    var object = JSON.parse(value);
-   object.taskstatus = "2";
+    object.taskstatus = "2";
    console.log(object.taskstatus)
+   var time = parseInt(object.estimatedtime);
+   if (object.estimatedtime != "" && object.taskstatus != "3") {
+      $("#alarm2").show();
+      $("#alarm2").timeTo(time, function(){ 
+        alert('Time is over!'); 
+        $('#alarm2').hide();
+        // object.taskstatus="3";
+        // return object.taskstatus;
+        $('#'+id).children().children().children().children('#dn').trigger('click');
+         object.taskstatus="3";
+      });
+       
+    } 
+    else if (object.estimatedtime === "") {
+    object.taskstatus = "2";
+    console.log("no estimatedtime!")
+    }
+
+  console.log(object.taskstatus);
    localStorage.setItem(id, JSON.stringify(object));   
+
   //  $('#clock').timeTo({
   //   seconds: 100
   // });
