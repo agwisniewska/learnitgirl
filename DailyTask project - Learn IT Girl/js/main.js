@@ -276,6 +276,7 @@ $('body').on('click', 'div.edit', function() {
     document.getElementById("datepicker3").value = object.startDate;
     document.getElementById("datepicker4").value =  object.endDate;
     $("input[name=optradio2][value=" + object.priority + "]").prop('checked', true);
+    $('#selectpickertime2').val(object.estimatedtime);
 
 });
 // function to remove task, using a special jquery confirm function. Because trash is dynamically created item I have to call confirm in body onclick function 

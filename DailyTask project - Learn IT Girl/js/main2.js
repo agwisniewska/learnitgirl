@@ -223,6 +223,7 @@ function updateTask() {
 
 		}
 	}
+	var estimatedtime= $( "#selectpickertime2 option:selected" ).val();
 //  as in function "cretae task()" I create a task object which will be added to localStorage
 	var task = {}
 	task.id = task_id;
@@ -231,6 +232,7 @@ function updateTask() {
 	task.startDate = startDate;
 	task.endDate = endDate;
 	task.priority = optradio;
+	task.estimatedtime = estimatedtime;
 
 	if(typeof(Storage)!=="undefined")
 		{
