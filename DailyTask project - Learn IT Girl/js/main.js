@@ -523,7 +523,9 @@ function hideComments() {
   $('#commentDescription').empty();
   $('#commentStartDate').empty();
   $('#commentEndDate').empty();
+  $('#commentPriority').empty();
   $('#submitPrompt').empty();
+
 }
 
 function hidePrompt() {
