@@ -147,13 +147,13 @@
 												<div class="form-group radio">
 													<label for="radiobuttons">Priority</label>
 													<label class="radio-inline">
-														<input type="radio" name="optradio" value="1" >High
+														<input type="radio" name="optradio" id="optradio1" value="1" onchange="validatePriority()"onchange="hidePrompt()" >High
 													</label>
 													<label class="radio-inline">
-														<input type="radio" name="optradio" value="2">Medium
+														<input type="radio" name="optradio" id="optradio2" value="2" onchange="validatePriority()" onchange="hidePrompt()">Medium
 													</label>
 													<label class="radio-inline">
-														<input type="radio" name="optradio" value="3">Low
+														<input type="radio" name="optradio" id="optradio3" value="3" onchange="validatePriority()" onchange="hidePrompt()">Low
 													<label id="commentPriority"> </label>
 													</label>
 												</div>
@@ -177,7 +177,7 @@
 													</select>
 
 												</div>
-												<button type="button" class="btn btn-primary" id="creator" onmouseover="validateForm()">Create task </button>
+												<button type="button" class="btn btn-primary" id="creator" onmouseover="validateForm()"onclick="checkForm()">Create task </button>
 																<label id="submitPrompt"> </label>  
 
 											</form>				          
