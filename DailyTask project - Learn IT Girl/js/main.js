@@ -404,7 +404,7 @@ $('#home').click(function () {
 
 $('#today').click(function () {
   $('.zadania').empty();
-  $('.zadania').append('<h2>  Today </h2>');
+  $('.zadania').append('<h2>Today</h2>')
   for(var i=0; i<localStorage.length; i++) {
          var key = localStorage.key(i);
          var value = localStorage[key];
@@ -412,7 +412,7 @@ $('#today').click(function () {
          console.log(typeof(myobj));
           if ( myobj.startDate === currentdate) {
                 
-                compareDates(myobj.endDate, currentdate, myobj.taskstatus, key, myobj.startDate, myobj.category, myobj.desc, myobj.priority, myobj.codetoopen);
+      compareDates(myobj.endDate, currentdate, myobj.taskstatus, key, myobj.startDate, myobj.category, myobj.desc, myobj.priority, myobj.codetoopen);
              
             }
 

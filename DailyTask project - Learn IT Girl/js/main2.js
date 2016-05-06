@@ -115,8 +115,8 @@ function printKeys() {
 // Here I check task's status. Function have three arguments, and depending on the status I create different content
 function compareDates(enddate, currentdate, status, key, startdate, category, desc, priority, code) {
 	 	if ( enddate === currentdate && status === "1" ) {
-	 		if ( code != '') {
-	   			var div = '<div class	="box"	id="' + key + '">' + trash + edit + hamburgermenu + checkbox   +'</div>';
+	 		if ( code != '' ) {
+	   			var div = '<div class	="box"	id="' + key + '">' + trash + edit + hamburgermenu + checkbox  +'</div>';
 	   			$('.zadania').append(div);
 	   		} else{
 
@@ -146,8 +146,14 @@ function compareDates(enddate, currentdate, status, key, startdate, category, de
 		   	}
 	   	}
 	   	else {
+	   		if ( code != '') {
+	   			var div = '<div class	="box"	id="' + key + '">' + trash + edit + hamburgermenu + checkbox   +'</div>';
+		   		$('.zadania').append(div);
+	   		}
+	   		else {
 			var div = '<div class	="box"	id="' + key + '">' + trash + edit + hamburgermenu + checkbox +'<h3>' + startdate + " "  + enddate + checkStatus(category, desc, status, priority) + '</h3>'  +'</div>';
 	   		$('.zadania').append(div);
+	   	}
 	   	}
 	  	
 }
