@@ -283,6 +283,7 @@ p3 {
 
 .checkbox {
 	margin-left: 770px;
+	position: absolute;
 
 }
 input[type=checkbox] {
@@ -341,4 +342,18 @@ height: 150px;
 .alarmbody {
 		margin-left: 128px;
 		margin-top: 4px
+}
+
+
+#submitPrompt {
+	text-align: center;
+	margin-top: 20px;
+	margin-left: 250px;
+	font-size: 25px;
+}
+
+#commentPriority {
+	font-weight: bold;
+
+	padding-left: 3px;
 }
