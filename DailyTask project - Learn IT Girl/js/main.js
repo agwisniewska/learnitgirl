@@ -306,11 +306,14 @@ $('body').on('click', 'div.trash', function() {
 $('body').on('click', 'div#dn', function () {
 
 
-    var id = $(this).parent().parent().parent().parent().attr('id');
+  var id = $(this).parent().parent().parent().parent().attr('id');
    var value = localStorage[id];
    var object = JSON.parse(value);
    object.taskstatus = "3";
    localStorage.setItem(id, JSON.stringify(object));   
+   if ($('#alarm2').is(':visible')) {
+      $('#alarm2').timeTo("start" === false).hide();
+   }
 
     $('.zadania').empty();
       printKeys();
