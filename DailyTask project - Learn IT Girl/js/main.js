@@ -348,8 +348,6 @@ $('body').on('click', 'div#do', function () {
       $("#alarm2").timeTo(time, function(){ 
         alert('Time is over!'); 
         $('#alarm2').hide();
-        // object.taskstatus="3";
-        // return object.taskstatus;
         $('#'+id).children().children().children().children('#dn').trigger('click');
          object.taskstatus="3";
       });
@@ -445,8 +443,8 @@ $('#next').click(function () {
 
 
 function validateDescription() {
-  var name = document.getElementById('taskdesc').value;
-  if (name.length === 0) {
+  var description = document.getElementById('taskdesc').value;
+  if (description.length === 0) {
     producePrompt("Description is required", "commentDescription", "red");
     return false;
   }
@@ -474,9 +472,9 @@ function validateStartDate() {
 }
 
 function validateEndDate() {
-  var name = document.getElementById('datepicker2').value;
+  var enddate = document.getElementById('datepicker2').value;
   
-  if (name.length === 0) {
+  if (enddate.length === 0) {
     producePrompt("EndDate is required", "commentEndDate", "red");
     return false;
     }
@@ -484,6 +482,39 @@ function validateEndDate() {
       return true
   
   }
+
+function validatePriority() {
+
+    if (document.getElementById("optradio1").checked == true) {
+        producePrompt("OK", "commentPriority", "green");    
+      	return true
+    }
+    else if (document.getElementById("optradio2").checked == true) {
+         producePrompt("OK", "commentPriority", "green");    
+      	return true
+    }
+    else if (document.getElementById("optradio3").checked == true) {
+         producePrompt("OK", "commentPriority", "green");    
+      		return true
+    }
+    else {
+        producePrompt("Priority is required", "commentPriority", "red");
+    	return false;
+        }
+    }
+
+
+
+	// if ($('input[name=optradio]:checked').length > 0) {
+ //    producePrompt("Priority is required", "commentPriority", "red");
+ //    return false;
+ //    }
+ //    producePrompt("OK", "commentPriority", "green");    
+ //      return true
+  
+ //  }
+
+
 
 function producePrompt(message, promptLocation, color) {
   document.getElementById(promptLocation).innerHTML = message;
@@ -495,7 +526,9 @@ function hideComments() {
   $('#commentDescription').empty();
   $('#commentStartDate').empty();
   $('#commentEndDate').empty();
+  $('#commentPriority').empty();
   $('#submitPrompt').empty();
+
 }
 
 function hidePrompt() {
@@ -504,7 +537,7 @@ function hidePrompt() {
 
 
 function validateForm() {
-  if (!validateDescription() && !validateStartDate() && !validateEndDate()) {
+  if (!validateDescription() && !validateStartDate() && !validateEndDate() && !validatePriority() ) {
       
       submitPrompt("COMPLETE THE FORM!", 'submitPrompt', 'red');
 
@@ -523,7 +556,7 @@ function submitPrompt(message, promptLocation, color) {
 
 function checkForm() {
   
-  if (!validateDescription() || !validateStartDate() || !validateEndDate() ) {
+  if (!validateDescription() || !validateStartDate() || !validateEndDate() || !validatePriority()) {
     submitPrompt("COMPLETE THE FORM!", 'submitPrompt', 'red');
     return false
   }
