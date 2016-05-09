@@ -194,7 +194,7 @@ function checkStatus(category, description, status, priority) {
 	priority = displaypriority(priority)
 	status = displaystatus(status)
 	if (status === "done") {
-		return  '<p class="done">' + category + " " +  description + priority + '</p>'
+		return  '<p class="done">' + category + " " +  description + " " +  priority + '</p>'
 	}
 	else if (status === "todo" ) {
 		return '<p>' + '<span class="label label-danger">To do</span>' + category + " " +  description + " " + priority +'</p>'
@@ -275,7 +275,7 @@ var dates = [];
     for (var i=0; i<dates.length; i++) {
         var object = dates[i];
         var key = object.id;
-        compareDates(object.endDate, currentdate, object.taskstatus, key, object.startDate, object.category, object.desc, object.priority);
+        compareDates(object.endDate, currentdate, object.taskstatus, key, object.startDate, object.category, object.desc, object.priority, object.codetoopen);
        console.log(myobj.priority)
         }
            
@@ -320,7 +320,7 @@ function sortByPriority () {
         var object = priorities[i];
         var key = object.id;
         console.log(key);
-        compareDates(object.endDate, currentdate, object.taskstatus, key, object.startDate, object.category, object.desc, object.priority);
+        compareDates(object.endDate, currentdate, object.taskstatus, key, object.startDate, object.category, object.desc, object.priority, object.codetoopen);
     }
  
 
@@ -352,7 +352,7 @@ function sortByStatus() {
         var object = taskstatuses[i];
         var key = object.id;
         console.log(key);
-        compareDates(object.endDate, currentdate, object.taskstatus, key, object.startDate, object.category, object.desc, object.priority);
+        compareDates(object.endDate, currentdate, object.taskstatus, key, object.startDate, object.category, object.desc, object.priority, object.codetoopen);
     }
  
 
@@ -384,7 +384,7 @@ function search() {
 
        		if (searchvalue.indexOf(search) != -1) {
 					console.log(search);
-					compareDates(tasks[i].endDate, currentdate, tasks[i].taskstatus, key, tasks[i].startDate, tasks[i].category, tasks[i].desc, tasks[i].priority);
+					compareDates(tasks[i].endDate, currentdate, tasks[i].taskstatus, key, tasks[i].startDate, tasks[i].category, tasks[i].desc, tasks[i].priority, tasks[i].codetoopen);
 	 				notfound = false;
       		 }
       		
